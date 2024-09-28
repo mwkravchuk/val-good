@@ -1,6 +1,13 @@
 require("dotenv").config();
 const express = require("express");
+const cors = require("cors");
 const app = express();
+
+// Routers
+const playerRouter = require("./routes/player");
+
+// Middleware
+app.use(cors());
 
 // Set up mongoose connection
 const mongoose = require("mongoose");
@@ -11,6 +18,8 @@ main().catch((err) => console.log(err));
 async function main() {
   await mongoose.connect(mongoDB);
 }
+
+app.use("/api/player", playerRouter);
 
 app.get("/", (req, res) => res.send("Hello, world!"));
 
