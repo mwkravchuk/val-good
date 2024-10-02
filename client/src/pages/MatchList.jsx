@@ -4,7 +4,7 @@ const MatchList = ({ matches }) => {
   return (
     <ul>
       {matches.map((match) => (
-        <MatchItem key={match.metadata.match_id} match={match}/>
+        <MatchItem key={match.meta.id} match={match}/>
       ))}
     </ul>
   );

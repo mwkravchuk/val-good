@@ -1,7 +1,7 @@
 const MatchItem = ({ match }) => {
   return (
     <li>
-      <p>Map: {match.metadata.map.name}</p>
+      <p>Map: {match.meta.map.name} ...... Mode: {match.meta.mode}</p>
     </li>
   );
 }

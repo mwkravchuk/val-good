@@ -35,3 +35,21 @@ exports.matches = async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 };
+
+exports.storedMatches = async (req, res) => {
+  const { puuid } = req.params;
+  const headers = {
+    Authorization: process.env.HENRIK_API_KEY,
+  };
+
+  try {
+    const response = await axios.get(
+      `https://api.henrikdev.xyz/valorant/v1/by-puuid/stored-matches/na/${puuid}`,
+      { headers }
+    );
+    res.json(response.data);
+  } catch (error) {
+    console.error("Error fetching matches", error);
+    res.status(500).send("Internal Server Error");
+  }
+};
