@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import MatchList from './MatchList';
-import axios from "../../axiosConfig";
+import axios from "../../../axiosConfig";
 
 const StatsPage = () => {
 
@@ -53,23 +53,20 @@ const StatsPage = () => {
   }, [selectedMode, matches]);
 
   return (
-    <>
-      <div>
-        <h1>Stats Page</h1>
-        <p>{username}</p>
-        <p>{tagline}</p>
-        <select name="modes" id="modes" onChange={(e) => setSelectedMode(e.target.value)}>
-          <option value="all">All</option>
-          <option value="competitive">Competitive</option>
-          <option value="unrated">Unrated</option>
-          <option value="deathmatch">Deathmatch</option>
-          <option value="teamdeathmatch">Team Deathmatch</option>
-          <option value="swiftplay">Swiftplay</option>
-          <option value="spikerush">Spike Rush</option>
-        </select>
-        <MatchList matches={filteredMatches}/>
-      </div>
-    </>
+    <div>
+      <p>{username}</p>
+      <p>{tagline}</p>
+      <select name="modes" id="modes" onChange={(e) => setSelectedMode(e.target.value)}>
+        <option value="all">All</option>
+        <option value="competitive">Competitive</option>
+        <option value="unrated">Unrated</option>
+        <option value="deathmatch">Deathmatch</option>
+        <option value="teamdeathmatch">Team Deathmatch</option>
+        <option value="swiftplay">Swiftplay</option>
+        <option value="spikerush">Spike Rush</option>
+      </select>
+      <MatchList matches={filteredMatches}/>
+    </div>
   );
 }
 

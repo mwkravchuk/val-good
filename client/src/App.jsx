@@ -1,41 +1,19 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { BrowserRouter } from "react-router-dom";
+
+import Header from "./components/structure/Header";
+import RenderRoutes from "./components/structure/RenderRoutes";
+import Footer from "./components/structure/Footer";
 
 const App = () => {
-
-  const navigate = useNavigate();
-  const [username, setUsername] = useState("");
-  const [tagline, setTagline] = useState("");
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    navigate('/stats', { state: { username, tagline } });
-  }
-
   return (
     <>
-      <h1>Valorant</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <input type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                placeholder="Username"
-                required
-          />
-        </div>
-        <div>
-          <input type="text"
-                  value={tagline}
-                  onChange={(e) => setTagline(e.target.value)}
-                  placeholder="Tagline"
-                  required
-            />
-        </div>
-        <button type="submit">Submit</button>
-      </form>
+      <BrowserRouter>
+        <Header />
+        <RenderRoutes />
+        <Footer />
+      </BrowserRouter>
     </>
-  )
+  );
 }
 
 export default App;
