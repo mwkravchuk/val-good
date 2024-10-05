@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
+import styles from "./LandingPage.module.css";
+
 const LandingPage = () => {
   
   const navigate = useNavigate();
@@ -13,28 +15,29 @@ const LandingPage = () => {
   }
 
   return (
-    <>
-      <h1>Valorant</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <input type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                placeholder="Username"
-                required
-          />
-        </div>
-        <div>
-          <input type="text"
-                  value={tagline}
-                  onChange={(e) => setTagline(e.target.value)}
-                  placeholder="Tagline"
+    <div className={styles.screenContainer}>
+      <div>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <input type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  placeholder="Username"
                   required
             />
-        </div>
-        <button type="submit">Submit</button>
-      </form>
-    </>
+          </div>
+          <div>
+            <input type="text"
+                    value={tagline}
+                    onChange={(e) => setTagline(e.target.value)}
+                    placeholder="Tagline"
+                    required
+              />
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
   )
 };
 
