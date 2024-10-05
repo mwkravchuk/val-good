@@ -1,6 +1,8 @@
+import styles from "./GeneralStats.module.css";
+
 const GeneralStats = () => {
   return (
-    <div>
+    <div className={styles.container}>
       general stats
     </div>
   );

@@ -13,13 +13,13 @@
 }
 
 .leftCol > *, .rightCol > * {
-  margin-bottom: 15px;
-  background-color: var(--background-color);
+  margin-bottom: .75em;
 }
 
 .leftCol {
   flex-basis: 35%;
-  margin-right: 15px;
+  margin-right: .75em;
+  background-color: var(--background-color);
 }
 
 .rightCol {

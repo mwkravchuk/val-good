@@ -1,9 +1,14 @@
+import styles from "./StatsHead.module.css";
+
 const StatsHead = ({ playerInfo }) => {
   return (
-    <>
-      <p>{playerInfo[0]}</p>
-      <p>{playerInfo[1]}</p>
-    </>
+    <div className={styles.container}>
+      <div className={styles.head}>
+        <div className={styles.infoContainer}>
+          {playerInfo[0]} #{playerInfo[1]}
+        </div>
+      </div>
+    </div>
   );
 };
 

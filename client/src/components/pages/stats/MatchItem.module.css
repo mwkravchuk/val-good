@@ -1,0 +1,6 @@
+.matchContainer {
+  padding: 5px;
+  margin-bottom: .75em;
+  background-color: var(--background-color);
+  height: 90px;
+}
