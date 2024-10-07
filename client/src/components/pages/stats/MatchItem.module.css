@@ -1,6 +1,29 @@
 .matchContainer {
   padding: 5px;
   margin-bottom: .75em;
-  background-color: var(--background-color);
   height: 90px;
 }
+
+.matchVictory {
+  background-color: 	hsl(163, 25%, 31%);
+  box-shadow: 1px 1px hsl(163, 25%, 45%);
+}
+
+.matchDefeat {
+  background-color: hsl(3, 21%, 36%);
+  box-shadow: 1px 1px hsl(3, 21%, 50%);
+
+}
+
+.resultTag {
+  font-weight: 600;
+}
+
+.victoryText {
+  color: hsl(163, 100%, 56%);
+}
+
+.defeatText {
+  color: hsl(16, 100%, 50%);
+}
+

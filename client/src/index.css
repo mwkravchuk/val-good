@@ -28,7 +28,7 @@ ul {
 /* Global variables */
 
 :root {
-  --background-color: hsl(268, 10%, 32%);
-  --background-color-dark: hsl(268, 10%, 20%);
+  --background-color: hsl(270, 7%, 33%);
+  --background-color-dark: hsl(270, 7%, 20%);
   --text-color: hsl(0, 0%, 100%);
 }
