@@ -1,3 +1,8 @@
+import ResultInfo from "./ResultInfo";
+import AgentInfo from "./AgentInfo";
+import MapInfo from "./MapInfo";
+import DetailedInfo from "./DetailedInfo";
+
 import styles from "./MatchItem.module.css";
 
 const MatchItem = ({ match }) => {
@@ -12,8 +17,10 @@ const MatchItem = ({ match }) => {
 
   return (
     <li className={`${styles.matchContainer} ${victory ? styles.matchVictory : styles.matchDefeat}`}>
-      <span className={`${styles.resultTag} ${victory ? styles.victoryText : styles.defeatText}`}>{victory ? "Victory" : "Defeat"}</span>
-      <p>Map: {match.meta.map.name} ...... Mode: {match.meta.mode}</p>
+      <ResultInfo victory={victory} mode={match.meta.mode}/>
+      <AgentInfo />
+      <MapInfo victory={victory} name={match.meta.map.name}/>
+      <DetailedInfo />
     </li>
   );
 }

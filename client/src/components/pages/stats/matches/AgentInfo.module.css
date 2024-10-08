@@ -1,0 +1,4 @@
+.agentInfo {
+  display: flex;
+  flex-direction: column;
+}

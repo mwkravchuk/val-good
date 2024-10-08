@@ -1,0 +1,21 @@
+.resultInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.resultTag {
+  font-weight: 600;
+  font-size: .9em;
+}
+
+.victoryText {
+  color: hsl(163, 100%, 56%);
+}
+
+.defeatText {
+  color: hsl(16, 100%, 50%);
+}
+
+.timeAgo {
+  font-size: .8em;
+}

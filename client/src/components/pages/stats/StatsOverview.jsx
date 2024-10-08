@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "../../../../axiosConfig";
 
 import GeneralStats from "./GeneralStats";
-import MatchList from "./MatchList";
+import MatchList from "./matches/MatchList";
 
 import CircularProgress from "@mui/material/CircularProgress";
 import styles from "./StatsOverview.module.css";

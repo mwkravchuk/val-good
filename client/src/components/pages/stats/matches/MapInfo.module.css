@@ -1,0 +1,4 @@
+.mapInfo {
+  display: flex;
+  flex-direction: column;
+}
