@@ -17,7 +17,7 @@ const MatchItem = ({ match }) => {
 
   return (
     <li className={`${styles.matchContainer} ${victory ? styles.matchVictory : styles.matchDefeat}`}>
-      <ResultInfo victory={victory} mode={match.meta.mode}/>
+      <ResultInfo victory={victory} mode={match.meta.mode} timestamp={match.meta.started_at}/>
       <AgentInfo />
       <MapInfo victory={victory} name={match.meta.map.name}/>
       <DetailedInfo />

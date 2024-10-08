@@ -31,4 +31,11 @@ ul {
   --background-color: hsl(270, 7%, 33%);
   --background-color-dark: hsl(270, 7%, 20%);
   --text-color: hsl(0, 0%, 100%);
+
+  --victory-color: hsl(163, 100%, 56%);
+  --victory-color-bg: hsl(163, 25%, 31%);
+  --victory-color-shadow: hsl(163, 25%, 45%);
+  --defeat-color: hsl(16, 100%, 50%);
+  --defeat-color-bg:hsl(3, 21%, 36%);
+  --defeat-color-shadow: hsl(3, 21%, 50%);
 }

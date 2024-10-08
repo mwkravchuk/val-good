@@ -10,12 +10,12 @@
 }
 
 .matchVictory {
-  background-color: 	hsl(163, 25%, 31%);
-  box-shadow: 2px 2px hsl(163, 25%, 45%);
+  background-color: 	var(--victory-color-bg);
+  box-shadow: 2px 2px var(--victory-color-shadow);
 }
 
 .matchDefeat {
-  background-color: hsl(3, 21%, 36%);
-  box-shadow: 1px 1px hsl(3, 21%, 50%);
+  background-color: var(--defeat-color-bg);
+  box-shadow: 1px 1px var(--defeat-color-shadow);
 }
 

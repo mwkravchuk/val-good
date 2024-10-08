@@ -5,15 +5,15 @@
 
 .resultTag {
   font-weight: 600;
-  font-size: .9em;
+  font-size: .8em;
 }
 
 .victoryText {
-  color: hsl(163, 100%, 56%);
+  color: var(--victory-color);
 }
 
 .defeatText {
-  color: hsl(16, 100%, 50%);
+  color: var(--defeat-color);
 }
 
 .timeAgo {
