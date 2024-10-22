@@ -1,11 +1,11 @@
 import styles from "./DetailedInfo.module.css";
 
-const DetailedInfo = () => {
+const DetailedInfo = ({ acs, damageDelta, damagePerRound }) => {
   return (
     <div className={styles.detailedInfo}>
-        <span>ACS</span>
-        <span>Damage/Round</span>
-        <span>Damage Delta</span>
+        <span>ACS: {acs}</span>
+        <span>Damage/Round: {damagePerRound}</span>
+        <span>Damage Delta: {damageDelta}</span>
       </div>
   );
 };

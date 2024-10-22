@@ -53,3 +53,17 @@ exports.storedMatches = async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 };
+
+exports.card = async (req, res) => {
+  const { playercardUuid } = req.params;
+
+  try {
+    const response = await axios.get(
+      `https://valorant-api.com/v1/playercards/${playercardUuid}`
+    );
+    res.json(response.data);
+  } catch (error) {
+    console.error("Error fetching player card", error);
+    res.status(500).send("Internal Server Error");
+  }
+};

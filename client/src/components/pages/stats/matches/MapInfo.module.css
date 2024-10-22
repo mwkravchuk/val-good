@@ -1,4 +1,10 @@
 .mapInfo {
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
+}
+
+.roundDiff {
+  font-size: 1.5em;
+  font-weight: 600;
 }

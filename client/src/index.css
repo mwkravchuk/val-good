@@ -29,13 +29,15 @@ ul {
 
 :root {
   --background-color: hsl(270, 7%, 33%);
+  --background-color-transparent: hsla(270, 7%, 33%, 30%);
   --background-color-dark: hsl(270, 7%, 20%);
+  --background-color-dark-transparent: hsla(270, 7%, 20%, 90%);
   --text-color: hsl(0, 0%, 100%);
 
   --victory-color: hsl(163, 100%, 56%);
   --victory-color-bg: hsl(163, 25%, 31%);
   --victory-color-shadow: hsl(163, 25%, 45%);
-  --defeat-color: hsl(16, 100%, 50%);
-  --defeat-color-bg:hsl(3, 21%, 36%);
-  --defeat-color-shadow: hsl(3, 21%, 50%);
+  --defeat-color: hsl(352, 79%, 58%);
+  --defeat-color-bg:hsl(350, 33%, 34%);
+  --defeat-color-shadow: hsl(350, 33%, 48%);
 }

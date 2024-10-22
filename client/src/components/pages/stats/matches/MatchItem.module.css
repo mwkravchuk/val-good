@@ -3,10 +3,13 @@
   margin-bottom: .75em;
   height: 90px;
   display: flex;
+  justify-content: space-between;
 }
 
 .matchContainer > * {
+  display: flex;
   flex: 1;
+  font-size: .8em;
 }
 
 .matchVictory {
@@ -16,6 +19,6 @@
 
 .matchDefeat {
   background-color: var(--defeat-color-bg);
-  box-shadow: 1px 1px var(--defeat-color-shadow);
+  box-shadow: 2px 2px var(--defeat-color-shadow);
 }
 

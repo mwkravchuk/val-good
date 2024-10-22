@@ -7,20 +7,40 @@ import styles from "./MatchItem.module.css";
 
 const MatchItem = ({ match }) => {
 
-  const isVictory = (match) => {
-    const selfTeam = match.stats.team;
-    const winningTeam = match.teams.blue > match.teams.red ? "Blue" : "Red";
-    return match.meta.mode === "Deathmatch" || selfTeam === winningTeam;
+  const { meta, teams, stats } = match; // Destructure match
+  const { map, mode, started_at } = meta; // Destructure meta
+  const { blue: blueRounds, red: redRounds } = teams; // Destructure teams 
+  const { character, score, damage, kills, deaths, assists, team, shots } = stats; // Destructure stats
+
+  const agentId = character.id
+  const numShots = (shots.head + shots.body + shots.leg);
+  const hsp = numShots > 0 ? (shots.head / numShots).toFixed(2) : 0;
+  const acs = Math.round(score / (blueRounds + redRounds));
+  const damageDelta = Math.round(damage.made - damage.received);
+  const damagePerRound = Math.round(damage.made / (blueRounds + redRounds));
+  const roundsWon = team === 'Blue' ? blueRounds : redRounds;
+  const roundsLost = team === 'Blue' ? redRounds : blueRounds;
+
+  const isVictory = () => {
+    const selfTeam = team;
+    const winningTeam = blueRounds > redRounds ? "Blue" : "Red";
+    return mode === "Deathmatch" || selfTeam === winningTeam;
   }
 
-  const victory = isVictory(match);
+  const victory = isVictory();
 
   return (
     <li className={`${styles.matchContainer} ${victory ? styles.matchVictory : styles.matchDefeat}`}>
-      <ResultInfo victory={victory} mode={match.meta.mode} timestamp={match.meta.started_at}/>
-      <AgentInfo />
-      <MapInfo victory={victory} name={match.meta.map.name}/>
-      <DetailedInfo />
+      <div className={styles.left}>
+        <ResultInfo victory={victory} mode={mode} timestamp={started_at} />
+        <AgentInfo mode={mode} hsp={hsp} kills={kills} deaths={deaths} assists={assists} agentId={agentId} />
+      </div>
+      <div className={styles.middle}>
+        <MapInfo victory={victory} roundsWon={roundsWon} roundsLost={roundsLost} name={map.name}/>
+      </div>
+      <div className={styles.right}>
+        <DetailedInfo acs={acs} damageDelta={damageDelta} damagePerRound={damagePerRound}/>
+      </div>
     </li>
   );
 }

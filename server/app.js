@@ -5,6 +5,7 @@ const app = express();
 
 // Routers
 const playerRouter = require("./routes/player");
+const valorantRouter = require("./routes/valorant");
 
 // Middleware
 app.use(cors());
@@ -20,6 +21,7 @@ async function main() {
 }
 
 app.use("/api/player", playerRouter);
+app.use("/api/valorant", valorantRouter);
 
 app.get("/", (req, res) => res.send("Hello, world!"));
 

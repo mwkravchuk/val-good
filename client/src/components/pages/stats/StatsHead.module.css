@@ -4,6 +4,8 @@
   height: 300px;
   background-color: var(--background-color);
   margin-bottom: 0.75em;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .head {
