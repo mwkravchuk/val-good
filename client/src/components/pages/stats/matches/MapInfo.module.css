@@ -2,9 +2,14 @@
   display: flex;
   flex-direction: column;
   margin: 0 auto;
+  justify-content: space-between;
 }
 
 .roundDiff {
   font-size: 1.5em;
   font-weight: 600;
+}
+
+span {
+  text-align: center;
 }
