@@ -1,9 +1,38 @@
 .agentInfo {
   display: flex;
+  flex-direction: row;
+  color: var(--neutral-text-darker);
+}
+
+.agent {
+  display: flex;
   flex-direction: column;
+  width: 70px;
+}
+
+.wideKDA {
+  margin-top: 5px;
+  font-weight: 600;
+}
+
+.verticalBar {
+  width: 1px;
+  background-color: #fff;
 }
 
 img {
   width: 45px;
   height: auto;
+}
+
+.kills {
+  color: var(--text-color);
+}
+
+.deaths {
+  color: var(--defeat-color);
+}
+
+.assists {
+  color: var(--text-color);
 }

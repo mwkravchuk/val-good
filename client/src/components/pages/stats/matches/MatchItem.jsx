@@ -33,13 +33,13 @@ const MatchItem = ({ match }) => {
     <li className={`${styles.matchContainer} ${victory ? styles.matchVictory : styles.matchDefeat}`}>
       <div className={styles.left}>
         <ResultInfo victory={victory} mode={mode} timestamp={started_at} />
-        <AgentInfo mode={mode} hsp={hsp} kills={kills} deaths={deaths} assists={assists} agentId={agentId} />
+        <AgentInfo victory={victory} kills={kills} deaths={deaths} assists={assists} agentId={agentId} />
       </div>
       <div className={styles.middle}>
         <MapInfo victory={victory} roundsWon={roundsWon} roundsLost={roundsLost} name={map.name}/>
       </div>
       <div className={styles.right}>
-        <DetailedInfo acs={acs} damageDelta={damageDelta} damagePerRound={damagePerRound}/>
+        <DetailedInfo mode={mode} acs={acs} hsp={hsp} damageDelta={damageDelta} damagePerRound={damagePerRound}/>
       </div>
     </li>
   );

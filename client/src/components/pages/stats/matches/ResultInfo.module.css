@@ -1,6 +1,7 @@
 .resultInfo {
   display: flex;
   flex-direction: column;
+  width: 108px;
 }
 
 .resultTag {
@@ -18,4 +19,5 @@
 
 .timeAgo {
   font-size: .8em;
+  color: var(--neutral-text);
 }
