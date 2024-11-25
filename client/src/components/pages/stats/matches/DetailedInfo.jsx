@@ -7,8 +7,8 @@ const DetailedInfo = ({ mode, acs, hsp, damageDelta, damagePerRound }) => {
           <>
             <span>ACS: {acs}</span>
             <span>HS%: {hsp}</span>
-            <span>Damage/Round: {damagePerRound}</span>
-            <span>Damage Delta: {damageDelta}</span>
+            <span>D/R: {damagePerRound}</span>
+            <span>D&Delta;: {damageDelta}</span>
           </>
         ) : (
           <span>Data not available for Deathmatch</span>

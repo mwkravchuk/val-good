@@ -16,6 +16,8 @@
 }
 
 .infoContainer {
+  color: var(--neutral-text-lighter);
   font-size: 3em;
   font-weight: 600;
+  text-shadow: 2px 2px 6px var(--background-color-dark-transparent);
 }

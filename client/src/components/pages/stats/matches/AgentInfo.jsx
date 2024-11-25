@@ -27,7 +27,7 @@ const AgentInfo = ({ victory, kills, deaths, assists, agentId }) => {
     <div className={styles.agentInfo}>
       <div className={styles.agent}>
         {agent ? (
-          <img src={agent.displayIconSmall} alt={agent.displayName} />
+          <img src={agent.displayIconSmall} alt={agent.displayName} className={styles.agentIcon}/>
         ) : (
           <p>Loading agent...</p> // Optional loading message
         )}
@@ -37,7 +37,7 @@ const AgentInfo = ({ victory, kills, deaths, assists, agentId }) => {
           <span className={styles.assists}>{assists}</span>
         </span>
       </div>
-      <VerticalBar color={victory ? "var(--victory-color-shadow)" : "var(--defeat-color-shadow)"} margin={"8px"} height={"100%"} />
+      <VerticalBar color={victory ? "var(--victory-color-shadow)" : "var(--defeat-color-shadow)"} margin={"8px"} height={"80%"} />
       <div className={styles.detailedInfo}></div>
     </div>
   );

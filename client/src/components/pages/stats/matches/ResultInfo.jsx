@@ -5,7 +5,7 @@ import RankProgress from "./RankProgress.jsx";
 
 import styles from "./ResultInfo.module.css";
 
-const ResultInfo = ({ victory, mode, timestamp }) => {
+const ResultInfo = ({ victory, mode, timestamp, tier, rankTable }) => {
   const [timeAgo, setTimeAgo] = useState("");
 
   // Function to calculate the "time ago"
@@ -44,8 +44,8 @@ const ResultInfo = ({ victory, mode, timestamp }) => {
     <div className={styles.resultInfo}>
       <span className={`${styles.resultTag} ${victory ? styles.victoryText : styles.defeatText}`}>{mode}</span>
       <span className={styles.timeAgo}>{timeAgo}</span>
-      <HorizontalBar color={victory ? "var(--victory-color-shadow)" : "var(--defeat-color-shadow)"} margin={"8px"} width={"60%"}/>
-      {mode === "Competitive" ? <RankProgress /> : ""}
+      <HorizontalBar color={victory ? "var(--victory-color-shadow)" : "var(--defeat-color-shadow)"} margin={"6px"} width={"60%"}/>
+      {mode === "Competitive" ? <RankProgress tier={tier} rankTable={rankTable}/> : ""}
     </div>
   );
 };

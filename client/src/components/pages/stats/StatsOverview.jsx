@@ -12,6 +12,7 @@ const StatsOverview = ({ playerData }) => {
   const [matches, setMatches] = useState([]);
   const [filteredMatches, setFilteredMatches] = useState([]);
   const [selectedMode, setSelectedMode] = useState("all");
+  const [tiers, setTiers] = useState([]);
 
   const [loading, setLoading] = useState(false);
 
@@ -42,6 +43,18 @@ const StatsOverview = ({ playerData }) => {
     }
   }, [selectedMode, matches]);
 
+  useEffect(() => {
+    const fetchTiers = async () => {
+      try {
+        const tiersResponse = await axios.get(`/valorant/tiers/`);
+        setTiers(tiersResponse.data.data);
+      } catch (error) {
+          console.error("Error fetching tiers", error);
+      }
+    }
+    fetchTiers();
+  }, [tiers]);
+
   return (
     <div className={styles.overviewContainer}>
       <div className={styles.overview}>
@@ -56,7 +69,7 @@ const StatsOverview = ({ playerData }) => {
                 <CircularProgress />
               </div>
             ) : (
-              <MatchList matches={filteredMatches}/>
+              <MatchList matches={filteredMatches} rankTable={tiers[tiers.length - 1]}/> // Use active competitive rank table
             )}
           </div>
         </div>

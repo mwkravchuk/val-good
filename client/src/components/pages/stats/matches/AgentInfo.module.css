@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: row;
   color: var(--neutral-text-darker);
+  align-items: center;
 }
 
 .agent {
@@ -20,7 +21,7 @@
   background-color: #fff;
 }
 
-img {
+.agentIcon {
   width: 45px;
   height: auto;
 }

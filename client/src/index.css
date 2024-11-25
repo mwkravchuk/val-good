@@ -33,6 +33,7 @@ ul {
   --background-color-dark: hsl(270, 7%, 20%);
   --background-color-dark-transparent: hsla(270, 7%, 20%, 90%);
   --text-color: hsl(0, 0%, 100%);
+  --neutral-text-lighter: hsl(260, 3%, 90%);
   --neutral-text: hsl(260, 3%, 82%);
   --neutral-text-darker: hsl(260, 3%, 70%);
 
