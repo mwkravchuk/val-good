@@ -1,8 +1,8 @@
 .agentInfo {
   display: flex;
   flex-direction: row;
-  color: var(--neutral-text-darker);
   align-items: center;
+  color: var(--neutral-text-darker);
 }
 
 .agent {
@@ -35,5 +35,14 @@
 }
 
 .assists {
+  color: var(--text-color);
+}
+
+.detailedInfo {
+  margin-top: 1em;
+  align-self: start;
+}
+
+.value {
   color: var(--text-color);
 }

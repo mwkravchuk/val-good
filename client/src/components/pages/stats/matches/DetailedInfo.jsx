@@ -1,17 +1,23 @@
 import styles from "./DetailedInfo.module.css";
 
-const DetailedInfo = ({ mode, acs, hsp, damageDelta, damagePerRound }) => {
+const DetailedInfo = ({ mode, acs, damageDelta, damagePerRound }) => {
   return (
     <div className={styles.detailedInfo}>
         {mode !== "Deathmatch" ? (
-          <>
-            <span>ACS: {acs}</span>
-            <span>HS%: {hsp}</span>
-            <span>D/R: {damagePerRound}</span>
-            <span>D&Delta;: {damageDelta}</span>
-          </>
+          <table className={styles.table}>
+            <tr>
+              <th>ACS</th>
+              <th>D/R</th>
+              <th>D&Delta;</th>
+            </tr>
+            <tr>
+              <td className={styles.value}>{acs}</td>
+              <td className={styles.value}>{damagePerRound}</td>
+              <td className={styles.value}>{damageDelta}</td>
+            </tr>
+          </table>
         ) : (
-          <span>Data not available for Deathmatch</span>
+          <span className={styles.errorMsg}>Data not available for Deathmatch</span>
         )
       }
       </div>

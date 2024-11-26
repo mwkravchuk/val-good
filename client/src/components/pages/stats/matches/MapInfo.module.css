@@ -13,3 +13,19 @@
 .mapInfo > span {
   text-align: center;
 }
+
+.mapName {
+  color: var(--neutral-text);
+}
+
+.result {
+  color: var(--text-color);
+}
+
+.victory {
+  color: var(--victory-color);
+}
+
+.defeat {
+  color: var(--defeat-color);
+}

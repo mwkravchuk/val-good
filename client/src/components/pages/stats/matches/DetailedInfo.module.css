@@ -1,5 +1,22 @@
 .detailedInfo {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  width: 100%;
+}
+
+th {
+  color: var(--neutral-text);
+  font-weight: normal;
+}
+
+td {
+  font-weight: 600;
+}
+
+.table {
+  width: 50%;
+}
+
+.errorMsg {
+  color: var(--neutral-text);
 }

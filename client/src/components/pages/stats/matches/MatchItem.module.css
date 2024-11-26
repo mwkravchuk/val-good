@@ -21,3 +21,9 @@
   box-shadow: 2px 2px var(--defeat-color-shadow);
 }
 
+.right {
+  align-items: center;
+  justify-content: center;
+  margin-left: 20px;
+}
+
