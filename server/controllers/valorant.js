@@ -25,3 +25,17 @@ exports.tiers = async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 };
+
+exports.map = async (req, res) => {
+  const { mapId } = req.params;
+
+  try {
+    const response = await axios.get(
+      `https://valorant-api.com/v1/maps/${mapId}`
+    );
+    res.json(response.data);
+  } catch (error) {
+    console.error("Error fetching map", error);
+    res.status(500).send("Internal Server Error");
+  }
+};

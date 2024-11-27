@@ -5,5 +5,6 @@ const valorantController = require("../controllers/valorant");
 
 router.get("/agent/:agentId", valorantController.agent);
 router.get("/tiers/", valorantController.tiers);
+router.get("/map/:mapId", valorantController.map);
 
 module.exports = router;

@@ -1,11 +1,9 @@
 import { useState, useEffect} from "react";
 import axios from "../../../../../axiosConfig";
 
-import VerticalBar from "../../../common/VerticalBar";
-
 import styles from "./AgentInfo.module.css";
 
-const AgentInfo = ({ victory, kills, deaths, assists, hsp, agentId }) => {
+const AgentInfo = ({ kills, deaths, assists, agentId }) => {
 
   const [agent, setAgent] = useState(null);
 
@@ -36,10 +34,6 @@ const AgentInfo = ({ victory, kills, deaths, assists, hsp, agentId }) => {
           <span className={styles.deaths}>{deaths}</span>&nbsp;/&nbsp;
           <span className={styles.assists}>{assists}</span>
         </span>
-      </div>
-      <VerticalBar color={victory ? "var(--victory-color-shadow)" : "var(--defeat-color-shadow)"} margin={"8px"} height={"80%"} />
-      <div className={styles.detailedInfo}>
-        <span className={styles.value}>{hsp}</span>
       </div>
     </div>
   );
