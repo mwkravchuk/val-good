@@ -1,6 +1,10 @@
 import styles from "./GeneralStats.module.css";
 
-const GeneralStats = () => {
+
+
+const GeneralStats = ({ matches }) => {
+
+
   return (
     <div className={styles.container}>
       general stats

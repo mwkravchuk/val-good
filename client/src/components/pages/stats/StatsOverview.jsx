@@ -63,7 +63,7 @@ const StatsOverview = ({ playerData }) => {
             <p>hi</p>
           </div>
           <div className={styles.rightCol}>
-            <GeneralStats />
+            <GeneralStats matches={filteredMatches}/>
             {loading ? (
               <div className={styles.spinner}>
                 <CircularProgress />

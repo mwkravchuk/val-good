@@ -1,8 +1,10 @@
 .mapInfo {
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
+  margin: auto 0;
   justify-content: space-evenly;
+  width: 100%;
+  height: 90%;
 }
 
 .roundDiff {
@@ -15,7 +17,7 @@
 }
 
 .mapName {
-  color: var(--neutral-text);
+  color: var(--text-color);
 }
 
 .result {

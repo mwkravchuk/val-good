@@ -38,7 +38,7 @@ ul {
   --neutral-text-darker: hsl(260, 3%, 70%);
 
   --victory-color: hsl(163, 100%, 56%);
-  --victory-color-bg: hsl(163, 25%, 31%);
+  --victory-color-bg: 163, 25%, 31%;
   --victory-color-shadow: hsl(163, 25%, 45%);
   --defeat-color: hsl(352, 79%, 58%);
   --defeat-color-bg:hsl(350, 33%, 34%);
