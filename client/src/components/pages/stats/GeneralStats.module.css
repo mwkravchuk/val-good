@@ -1,4 +1,35 @@
 .container {
+  display: flex;
+  align-items: center;
   background-color: var(--background-color);
-  height: 225px;
+  height: 150px;
+}
+
+.container > div {
+  flex: 1;
+}
+
+.left {
+
+}
+
+.middle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.right {
+
+}
+
+.KDA {
+  font-weight: 700;
+  font-size: 1.3em;
+}
+
+.WL {
+  margin-top: 10px;
+  color: var(--neutral-text);
+  font-weight: 400;
 }
