@@ -26,6 +26,16 @@ exports.tiers = async (req, res) => {
   }
 };
 
+exports.gamemodes = async (req, res) => {
+  try {
+    const response = await axios.get(`https://valorant-api.com/v1/gamemodes/`);
+    res.json(response.data);
+  } catch (error) {
+    console.error("Error fetching gamemodes", error);
+    res.status(500).send("Internal Server Error");
+  }
+};
+
 exports.map = async (req, res) => {
   const { mapId } = req.params;
 

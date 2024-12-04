@@ -13,7 +13,7 @@ const StatsOverview = ({ playerData }) => {
   const [filteredMatches, setFilteredMatches] = useState([]);
   const [selectedMode, setSelectedMode] = useState("all");
   const [tiers, setTiers] = useState([]);
-
+  const [gamemodes, setGamemodes] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const StatsOverview = ({ playerData }) => {
     if (selectedMode === "all") {
       setFilteredMatches(matches);
     } else {
-      const filteredMatches = matches.filter((match) => match.meta.mode.toLowerCase() === selectedMode);
+      const filteredMatches = matches.filter((match) => match.meta.mode === selectedMode);
       setFilteredMatches(filteredMatches);
     }
   }, [selectedMode, matches]);
@@ -53,11 +53,45 @@ const StatsOverview = ({ playerData }) => {
       }
     }
     fetchTiers();
-  }, [tiers]);
+  }, []);
+
+  useEffect(() => {
+    const fetchGamemodes = async () => {
+      try {
+        const gamemodesResponse = await axios.get(`/valorant/gamemodes/`);
+        const excludedModes = ["Bot Match", "Basic Training", "Onboarding", "The Range"];
+        let playableGamemodes = gamemodesResponse.data.data
+          .filter((mode) => !excludedModes.includes(mode.displayName))
+          .map((mode) => mode.displayName);
+
+          if (!playableGamemodes.includes("Competitive")) {
+            playableGamemodes = ["Competitive", ...playableGamemodes];
+          } // Not in Api call for some reason.
+        
+        setGamemodes(["All", ...playableGamemodes]);
+      } catch (error) {
+          console.error("Error fetching gamemodes", error);
+      }
+    }
+    fetchGamemodes();
+  }, []);
+
+  
 
   return (
     <div className={styles.overviewContainer}>
       <div className={styles.overview}>
+        {gamemodes.map((mode) => (
+          <button
+            key={mode}
+            onClick={() => setSelectedMode(mode)}
+            style={{
+              backgroundColor: selectedMode === mode ? "darkgray" : "lightgray",
+            }}
+          >
+            {mode}
+          </button>
+        ))}
         <div className={styles.cols}>
           <div className={styles.leftCol}>
             <p>hi</p>
