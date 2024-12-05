@@ -11,7 +11,7 @@ const StatsOverview = ({ playerData }) => {
 
   const [matches, setMatches] = useState([]);
   const [filteredMatches, setFilteredMatches] = useState([]);
-  const [selectedMode, setSelectedMode] = useState("all");
+  const [selectedMode, setSelectedMode] = useState("All");
   const [tiers, setTiers] = useState([]);
   const [gamemodes, setGamemodes] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -35,11 +35,10 @@ const StatsOverview = ({ playerData }) => {
   }, [playerData]);
 
   useEffect(() => {
-    if (selectedMode === "all") {
+    if (selectedMode == "All") {
       setFilteredMatches(matches);
     } else {
-      const filteredMatches = matches.filter((match) => match.meta.mode === selectedMode);
-      setFilteredMatches(filteredMatches);
+      setFilteredMatches(matches.filter((match) => match.meta.mode === selectedMode));
     }
   }, [selectedMode, matches]);
 
@@ -76,22 +75,25 @@ const StatsOverview = ({ playerData }) => {
     fetchGamemodes();
   }, []);
 
-  
-
   return (
     <div className={styles.overviewContainer}>
       <div className={styles.overview}>
-        {gamemodes.map((mode) => (
-          <button
-            key={mode}
-            onClick={() => setSelectedMode(mode)}
-            style={{
-              backgroundColor: selectedMode === mode ? "darkgray" : "lightgray",
-            }}
-          >
-            {mode}
-          </button>
-        ))}
+        <div className={styles.modesContainer}>
+          <div className={styles.modes}>
+            {gamemodes.map((mode) => (
+              <button
+                key={mode}
+                onClick={() => setSelectedMode(mode)}
+                className={styles.modeBtn}
+                style={{
+                  backgroundColor: selectedMode === mode ? "var(--primary-color)" : "var(--background-color)",
+                }}
+              >
+                {mode}
+              </button>
+            ))}
+          </div>
+        </div>
         <div className={styles.cols}>
           <div className={styles.leftCol}>
             <p>hi</p>

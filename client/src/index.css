@@ -28,6 +28,7 @@ ul {
 /* Global variables */
 
 :root {
+  --primary-color: hsl(271, 26%, 43%);
   --background-color: hsl(270, 7%, 33%);
   --background-color-transparent: hsla(270, 7%, 33%, 30%);
   --background-color-dark: hsl(270, 7%, 20%);
