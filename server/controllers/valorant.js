@@ -14,6 +14,18 @@ exports.agent = async (req, res) => {
   }
 };
 
+exports.agents = async (req, res) => {
+  const { agentId } = req.params;
+
+  try {
+    const response = await axios.get(`https://valorant-api.com/v1/agents/`);
+    res.json(response.data);
+  } catch (error) {
+    console.error("Error fetching agents", error);
+    res.status(500).send("Internal Server Error");
+  }
+};
+
 exports.tiers = async (req, res) => {
   try {
     const response = await axios.get(

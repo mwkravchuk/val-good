@@ -29,7 +29,7 @@ const StatsPage = () => {
   return (
     <section>
       <StatsHead playerInfo={[username, tagline]} playerData={playerData}/>
-      <StatsOverview playerData={playerData}/>
+      <StatsOverview playerInfo={[username, tagline]} playerData={playerData}/>
     </section>
   );
 }

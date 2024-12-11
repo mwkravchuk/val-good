@@ -1,6 +1,12 @@
 import MatchItem from "./MatchItem";
 
-const MatchList = ({ matches, rankTable }) => {
+import { GlobalData } from "../../../../contexts/GlobalDataProvider";
+
+const MatchList = ({ matches }) => {
+
+  const { tiers } = GlobalData();
+  const rankTable = tiers[tiers.length - 1];
+
   return (
     <>
       <ul>
@@ -8,7 +14,6 @@ const MatchList = ({ matches, rankTable }) => {
           <MatchItem key={match.meta.id} match={match} rankTable={rankTable}/>
         ))}
       </ul>
-    
     </>
   );
 };
