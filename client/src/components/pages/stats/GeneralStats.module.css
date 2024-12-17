@@ -27,21 +27,8 @@
 
 }
 
-.KDA {
-  font-weight: 700;
-  font-size: 1.3em;
-}
-
 .WL {
   margin-top: 5px;
   color: var(--neutral-text);
   font-size: .9em;
-}
-
-.deaths {
-  color: var(--defeat-color);
-}
-
-.kda > span {
-  font-size: .85em;
 }

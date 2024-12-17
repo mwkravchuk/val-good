@@ -1,0 +1,13 @@
+.KDA {
+  font-weight: 700;
+  font-size: 1.3em;
+}
+
+.deaths {
+  color: var(--defeat-color);
+}
+
+.kda > span {
+  font-size: .85em;
+}
+

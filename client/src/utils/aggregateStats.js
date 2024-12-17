@@ -19,21 +19,12 @@ export const aggregateStats = (matches) => {
 
   matches.forEach((match) => {
     const result = updateWinsLosses(match, stats);
-    const map = match.meta.map.name;
-    const agent = match.stats.character.name;
-    updateMapStats(map, result, stats.maps);
-    updateAgentStats(agent, result, stats.agents);
-
-    stats.kills += match.stats.kills;
-    stats.deaths += match.stats.deaths;
-    stats.assists += match.stats.assists;
-    stats.headshots += match.stats.shots.head;
-    stats.bodyshots += match.stats.shots.body;
-    stats.legshots += match.stats.shots.leg;
+    updateCombatStats(match, stats);
+    updateMapStats(match, result, stats.maps);
+    updateAgentStats(match, result, stats.agents);
   });
 
   stats.totalshots = stats.headshots + stats.bodyshots + stats.legshots;
-
   stats.winRate = (stats.wins / stats.totalGames) * 100;
   stats.kda = ((stats.kills + stats.assists) / stats.deaths).toFixed(2);
   stats.hsp = (stats.headshots / stats.totalshots) * 100;
@@ -60,7 +51,18 @@ const updateWinsLosses = (match, stats) => {
   return result;
 };
 
-const updateAgentStats = (agent, result, agents) => {
+const updateCombatStats = (match, stats) => {
+  stats.kills += match.stats.kills;
+  stats.deaths += match.stats.deaths;
+  stats.assists += match.stats.assists;
+  stats.headshots += match.stats.shots.head;
+  stats.bodyshots += match.stats.shots.body;
+  stats.legshots += match.stats.shots.leg;
+};
+
+const updateAgentStats = (match, result, agents) => {
+  const agent = match.stats.character.name;
+
   if (!agents[agent]) {
     agents[agent] = { wins: 0, losses: 0, draws: 0, games: 0 };
   }
@@ -74,7 +76,9 @@ const updateAgentStats = (agent, result, agents) => {
   }
 };
 
-const updateMapStats = (map, result, maps) => {
+const updateMapStats = (match, result, maps) => {
+  const map = match.meta.map.name;
+
   if (!maps[maps]) {
     maps[map] = { wins: 0, losses: 0, draws: 0, games: 0 };
   }
