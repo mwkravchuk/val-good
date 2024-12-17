@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "../../../../axiosConfig";
 import { GlobalData } from "../../../contexts/GlobalDataProvider";
 
-import GeneralStats from "./GeneralStats";
+import GeneralStats from "./general/GeneralStats";
+import Summary from "./Summary";
 import MatchList from "./matches/MatchList";
 
 import CircularProgress from "@mui/material/CircularProgress";
@@ -14,6 +15,7 @@ const StatsOverview = ({ playerData }) => {
 
   const [matches, setMatches] = useState([]);
   const [filteredMatches, setFilteredMatches] = useState([]);
+  const [playerMMR, setPlayerMMR] = useState(null);
   const [selectedMode, setSelectedMode] = useState("All");
   const [loading, setLoading] = useState(false);
 
@@ -43,6 +45,21 @@ const StatsOverview = ({ playerData }) => {
     }
   }, [selectedMode, matches]);
 
+  useEffect(() => {
+    if (playerData) {
+      const fetchMMR = async () => {
+        try {
+          const mmrResponse = await axios.get(`/player/mmr/${playerData.puuid}`);
+          console.log("Player MMR: ", mmrResponse.data.data);
+          setPlayerMMR(mmrResponse.data.data);
+        } catch (error) {
+          console.error("Error fetching player MMR", error);
+        }
+      };
+      fetchMMR();
+    }
+  }, [playerData]);
+
   return (
     <div className={styles.overviewContainer}>
       <div className={styles.overview}>
@@ -65,16 +82,16 @@ const StatsOverview = ({ playerData }) => {
         </div>
         <div className={styles.cols}>
           <div className={styles.leftCol}>
-            <p>hi</p>
+            <GeneralStats playerMMR={playerMMR}/>
           </div>
           <div className={styles.rightCol}>
-            <GeneralStats matches={filteredMatches}/>
+            <Summary matches={filteredMatches}/>
             {loading ? (
               <div className={styles.spinner}>
                 <CircularProgress />
               </div>
             ) : (
-              <MatchList matches={filteredMatches}/> // Use active competitive rank table
+              <MatchList matches={filteredMatches}/>
             )}
           </div>
         </div>

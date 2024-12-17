@@ -55,13 +55,19 @@ exports.storedMatches = async (req, res) => {
 };
 
 exports.mmr = async (req, res) => {
+  const { puuid } = req.params;
+  const headers = {
+    Authorization: process.env.HENRIK_API_KEY,
+  };
+
   try {
     const response = await axios.get(
-      `https://valorant-api.com/v1/playercards/${playercardUuid}`
+      `https://api.henrikdev.xyz/valorant/v3/by-puuid/mmr/na/pc/${puuid}`,
+      { headers }
     );
     res.json(response.data);
   } catch (error) {
-    console.error("Error fetching player card", error);
+    console.error("Error fetching player mmr", error);
     res.status(500).send("Internal Server Error");
   }
 };

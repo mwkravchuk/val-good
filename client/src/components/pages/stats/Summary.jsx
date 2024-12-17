@@ -4,9 +4,9 @@ import KDAVisual from "./KDAVisual";
 import RoleVisual from "./RoleVisual";
 import WinLossCircle from "../../external/WinLossCircle";
 
-import styles from "./GeneralStats.module.css";
+import styles from "./Summary.module.css";
 
-const GeneralStats = ({ matches }) => {
+const Summary = ({ matches }) => {
 
   const stats = aggregateStats(matches);
 
@@ -26,4 +26,4 @@ const GeneralStats = ({ matches }) => {
   );
 };
 
-export default GeneralStats
+export default Summary;

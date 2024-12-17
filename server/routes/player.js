@@ -9,7 +9,7 @@ router.get("/matches/:puuid", playerController.matches);
 
 router.get("/stored-matches/:puuid", playerController.storedMatches);
 
-router.get("/mmr", playerController.mmr);
+router.get("/mmr/:puuid", playerController.mmr);
 
 router.get("/card/:playercardUuid", playerController.card);
 
