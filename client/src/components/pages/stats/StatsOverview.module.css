@@ -45,7 +45,7 @@
 .leftCol {
   flex-basis: 35%;
   margin-right: .75em;
-  background-color: var(--background-color);
+  background-color: var(--background-color-dark);
 }
 
 .rightCol {

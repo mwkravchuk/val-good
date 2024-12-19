@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.rankImage {
+  height: auto;
+  width: 20px;
+}
+
+.seasonItem {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.btn {
+  height: 3em;
+  border: none;
+  color: var(--neutral-text);
+  padding: 3px;
+  background-color: var(--background-color-med);
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.games {
+  margin-left: auto;
+}

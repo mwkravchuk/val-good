@@ -1,4 +1,10 @@
-.col {
+.container {
   display: flex;
   flex-direction: column;
+  margin-left: 10px;
+}
+
+.container > div {
+  margin-bottom: .75em;
+  background-color: var(--background-color);
 }
