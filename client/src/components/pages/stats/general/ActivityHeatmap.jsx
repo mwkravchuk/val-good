@@ -1,7 +1,13 @@
-const ActivityHeatmap = ({ height }) => {
+import sharedStyles from "../../../../styles/Shared.module.css";
+import styles from "./ActivityHeatmap.module.css";
+
+const ActivityHeatmap = () => {
   return (
-    <div style={{ height }}>
-      activity heatmap
+    <div className={styles.container}>
+      <div className={styles.content}>
+        <h2 className={sharedStyles.smallHeading}>Activity Heatmap</h2>
+        
+      </div>
     </div>
   );
 };

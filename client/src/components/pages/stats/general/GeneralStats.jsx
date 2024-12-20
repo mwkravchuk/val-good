@@ -8,8 +8,8 @@ const GeneralStats = ({ playerMMR }) => {
   return (
     <div className={styles.container}>
       <RankedHistory playerMMR={playerMMR} />
-      <ActivityHeatmap height="250px"/>
-      <Accuracy height="150px"/>
+      <ActivityHeatmap />
+      <Accuracy />
     </div>
   );
 };

@@ -1,6 +1,6 @@
-const Accuracy = ({ height }) => {
+const Accuracy = () => {
   return (
-    <div style={{ height }}>
+    <div>
       accuracy summary
     </div>
   );

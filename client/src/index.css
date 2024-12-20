@@ -45,4 +45,10 @@ ul {
   --defeat-color: hsl(352, 79%, 58%);
   --defeat-color-bg:hsl(350, 33%, 34%);
   --defeat-color-shadow: hsl(350, 33%, 48%);
+
+  --font-size-small: 0.875rem; /* 14px */
+  --font-size-base: 1rem;      /* 16px */
+  --font-size-medium: 1.25rem; /* 20px */
+  --font-size-large: 1.5rem;   /* 24px */
+  --font-size-xlarge: 2rem;    /* 32px */
 }

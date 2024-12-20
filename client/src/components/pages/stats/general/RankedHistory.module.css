@@ -3,15 +3,8 @@
   flex-direction: column;
 }
 
-.rankImage {
-  height: auto;
-  width: 20px;
-}
-
-.seasonItem {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
+.content {
+  padding: 5px;
 }
 
 .btn {
@@ -23,9 +16,6 @@
 }
 
 .btn:hover {
+  color: var(--text-color);
   cursor: pointer;
-}
-
-.games {
-  margin-left: auto;
 }

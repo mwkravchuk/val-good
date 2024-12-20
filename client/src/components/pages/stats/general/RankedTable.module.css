@@ -1,0 +1,37 @@
+.table {
+  margin: 10px 0;
+  width: 100%;
+  color: var(--neutral-text);
+  font-size: var(--font-size-small);
+}
+
+td, th {
+  text-align: left;
+}
+
+table th {
+  color: var(--text-color);
+}
+
+th:last-child {
+  text-align: right;
+}
+
+.table td {
+  font-weight: 400;
+}
+
+.rankColumn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.gamesColumn {
+  text-align: right;
+}
+
+.rankImage {
+  height: auto;
+  width: 20px;
+}
