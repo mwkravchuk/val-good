@@ -3,10 +3,6 @@
   flex-direction: column;
 }
 
-.content {
-  padding: 5px;
-}
-
 .btn {
   height: 3em;
   border: none;

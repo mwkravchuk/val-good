@@ -25,7 +25,7 @@ const StatsOverview = ({ playerData }) => {
         setLoading(true);
         try {
           const matchesResponse = await axios.get(`/player/stored-matches/${playerData.puuid}`);
-          console.log(matchesResponse);
+          console.log("Matches: ", matchesResponse.data.data);
           setMatches(matchesResponse.data.data);
         } catch (error) {
             console.error("Error fetching matches", error);
@@ -82,7 +82,7 @@ const StatsOverview = ({ playerData }) => {
         </div>
         <div className={styles.cols}>
           <div className={styles.leftCol}>
-            <GeneralStats playerMMR={playerMMR}/>
+            <GeneralStats matches={matches} playerMMR={playerMMR}/>
           </div>
           <div className={styles.rightCol}>
             <Summary matches={filteredMatches}/>

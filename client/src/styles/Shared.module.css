@@ -1,5 +1,8 @@
 .smallHeading {
+  width: 100%;
   font-size: var(--font-size-base);
   font-weight: 700;
   color: var(--neutral-text-lighter);
+  border-bottom: solid 1px var(--background-color-dark);
+  padding: 10px 6px;
 }

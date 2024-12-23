@@ -13,7 +13,7 @@ const RankedHistory = ({ playerMMR, height }) => {
   return (
     <div className={styles.container} style={{ height }}>
       <div className={styles.content}>
-        <h2 className={sharedStyles.smallHeading}>Competitive History</h2>
+        <h2 className={sharedStyles.smallHeading}>Competitive</h2>
         <RankedTable visibleMMR={visibleMMR}/>
       </div>
       {sortedMMR.length > 5 && (

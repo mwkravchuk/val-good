@@ -3,17 +3,18 @@
   width: 100%;
   color: var(--neutral-text);
   font-size: var(--font-size-small);
+  padding: 0 5px;
 }
 
 td, th {
   text-align: left;
 }
 
-table th {
+.table th {
   color: var(--text-color);
 }
 
-th:last-child {
+.table th:last-child {
   text-align: right;
 }
 

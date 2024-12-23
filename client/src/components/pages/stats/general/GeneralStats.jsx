@@ -1,14 +1,14 @@
 import RankedHistory from "./RankedHistory";
-import ActivityHeatmap from "./ActivityHeatmap";
+import Activity from "./Activity";
 import Accuracy from "./Accuracy";
 
 import styles from "./GeneralStats.module.css";
 
-const GeneralStats = ({ playerMMR }) => {
+const GeneralStats = ({ matches, playerMMR }) => {
   return (
     <div className={styles.container}>
       <RankedHistory playerMMR={playerMMR} />
-      <ActivityHeatmap />
+      <Activity matches={matches}/>
       <Accuracy />
     </div>
   );

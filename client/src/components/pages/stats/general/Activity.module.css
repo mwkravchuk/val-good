@@ -1,0 +1,9 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.heatmapContainer {
+  display: flex;
+  justify-content: center;
+}
