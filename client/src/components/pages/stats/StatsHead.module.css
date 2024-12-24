@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   height: 300px;
-  background-color: var(--background-color);
+  background-color: hsl(var(--background-color));
   margin-bottom: 0.75em;
   background-repeat: no-repeat;
   background-size: cover;
@@ -16,8 +16,8 @@
 }
 
 .infoContainer {
-  color: var(--neutral-text-lighter);
+  color: hsl(var(--neutral-text-lighter));
   font-size: 3em;
   font-weight: 600;
-  text-shadow: 2px 2px 6px var(--background-color-dark-transparent);
+  text-shadow: 2px 2px 6px hsla(var(--background-color-dark-transparent), 90%);
 }

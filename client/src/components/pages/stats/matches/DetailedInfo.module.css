@@ -6,7 +6,7 @@
 }
 
 th {
-  color: var(--neutral-text);
+  color: hsl(var(--neutral-text));
   font-weight: normal;
 }
 
@@ -19,5 +19,5 @@ td {
 }
 
 .errorMsg {
-  color: var(--neutral-text);
+  color: hsl(var(--neutral-text));
 }

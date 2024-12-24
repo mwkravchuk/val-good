@@ -12,14 +12,14 @@
 }
 
 .victoryText {
-  color: var(--victory-color);
+  color: hsl(var(--victory-color));
 }
 
 .defeatText {
-  color: var(--defeat-color);
+  color: hsl(var(--defeat-color));
 }
 
 .timeAgo {
   font-size: .8em;
-  color: var(--neutral-text);
+  color: hsl(var(--neutral-text));
 }

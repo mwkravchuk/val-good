@@ -25,7 +25,7 @@ const StatsHead = ({ playerInfo, playerData }) => {
   return (
     <div
       className={styles.container}
-      style={{ backgroundImage: cardArt ? `linear-gradient(to bottom, var(--background-color-transparent), var(--background-color-dark-transparent)), url(${cardArt.wideArt})` : "none"}}>
+      style={{ backgroundImage: cardArt ? `linear-gradient(to bottom, hsl(var(--background-color-transparent)), hsl(var(--background-color-dark-transparent))), url(${cardArt.wideArt})` : "none"}}>
 
       <div className={styles.head}>
         <div className={styles.infoContainer}>

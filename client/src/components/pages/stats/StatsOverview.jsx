@@ -71,7 +71,8 @@ const StatsOverview = ({ playerData }) => {
                 onClick={() => setSelectedMode(mode)}
                 className={styles.modeBtn}
                 style={{
-                  backgroundColor: selectedMode === mode ? "var(--primary-color)" : "var(--background-color)",
+                  borderBottomStyle: "solid",
+                  borderBottomColor: selectedMode === mode ? "hsl(var(--primary-color))" : "hsl(var(--background-color))",
                   fontWeight: selectedMode === mode ? "700" : "500",
                 }}
               >

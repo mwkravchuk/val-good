@@ -6,12 +6,12 @@
 .btn {
   height: 3em;
   border: none;
-  color: var(--neutral-text);
+  color: hsl(var(--neutral-text));
   padding: 3px;
-  background-color: var(--background-color-med);
+  background-color: hsl(var(--background-color-med));
 }
 
 .btn:hover {
-  color: var(--text-color);
+  color: hsl(var(--text-color));
   cursor: pointer;
 }

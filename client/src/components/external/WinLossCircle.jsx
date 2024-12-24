@@ -12,9 +12,9 @@ const WinLossCircle = ({ wins, losses }) => {
         text={`${Math.round(winPercentage)}%`}
         strokeWidth={16}
         styles={buildStyles({
-          pathColor: 'var(--victory-color)', // Progress color
-          trailColor: 'var(--defeat-color)', // Background trail color
-          textColor: 'var(--victory-color)', // Text color
+          pathColor: 'hsl(var(--victory-color))', // Progress color
+          trailColor: 'hsl(var(--defeat-color))', // Background trail color
+          textColor: 'hsl(var(--victory-color))', // Text color
           strokeLinecap: 'butt',
           textSize: 16,
         })}

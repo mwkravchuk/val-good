@@ -17,17 +17,17 @@
 }
 
 .mapName {
-  color: var(--text-color);
+  color: hsl(var(--text-color));
 }
 
 .result {
-  color: var(--text-color);
+  color: hsl(var(--text-color));
 }
 
 .victory {
-  color: var(--victory-color);
+  color: hsl(var(--victory-color));
 }
 
 .defeat {
-  color: var(--defeat-color);
+  color: hsl(var(--defeat-color));
 }

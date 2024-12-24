@@ -44,7 +44,7 @@ const ResultInfo = ({ victory, mode, timestamp, tier, rankTable }) => {
     <div className={styles.resultInfo}>
       <span className={`${styles.resultTag} ${victory ? styles.victoryText : styles.defeatText}`}>{mode}</span>
       <span className={styles.timeAgo}>{timeAgo}</span>
-      <HorizontalBar color={victory ? "var(--victory-color-shadow)" : "var(--defeat-color-shadow)"} margin={"6px"} width={"60%"}/>
+      <HorizontalBar color={victory ? "hsl(var(--victory-color-shadow))" : "hsl(var(--defeat-color-shadow))"} margin={"6px"} width={"60%"}/>
       {mode === "Competitive" ? <RankProgress tier={tier} rankTable={rankTable}/> : ""}
     </div>
   );

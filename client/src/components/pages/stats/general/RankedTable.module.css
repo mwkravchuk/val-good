@@ -1,7 +1,7 @@
 .table {
   margin: 10px 0;
   width: 100%;
-  color: var(--neutral-text);
+  color: hsl(var(--neutral-text));
   font-size: var(--font-size-small);
   padding: 0 5px;
 }
@@ -11,7 +11,7 @@ td, th {
 }
 
 .table th {
-  color: var(--text-color);
+  color: hsl(var(--text-color));
 }
 
 .table th:last-child {

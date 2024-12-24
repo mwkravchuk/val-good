@@ -10,7 +10,7 @@
 
 .modesContainer {
   height: 50px;
-  background-color: var(--background-color);
+  background-color: hsl(var(--background-color));
   margin-bottom: .75em;
   display: flex;
   align-items: center;
@@ -27,7 +27,8 @@
 .modeBtn {
   flex: 1;
   border: none;
-  color: var(--text-color);
+  color: hsl(var(--text-color));
+  background: none;
 }
 
 .modeBtn:hover {
@@ -45,7 +46,7 @@
 .leftCol {
   flex-basis: 35%;
   margin-right: .75em;
-  background-color: var(--background-color-dark);
+  background-color: hsl(var(--background-color-dark));
 }
 
 .rightCol {

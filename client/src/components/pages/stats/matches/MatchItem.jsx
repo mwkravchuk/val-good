@@ -41,7 +41,7 @@ const MatchItem = ({ match, rankTable }) => {
         <MapInfo victory={victory} roundsWon={roundsWon} roundsLost={roundsLost} name={map.name}/>
       </div>
       <div className={styles.right}>
-        <VerticalBar color={victory ? "var(--victory-color-shadow)" : "var(--defeat-color-shadow)"} margin={"8px"} height={"80%"}/>
+        <VerticalBar color={victory ? "hsl(var(--victory-color-shadow))" : "hsl(var(--defeat-color-shadow))"} margin={"8px"} height={"80%"}/>
         <DetailedInfo victory={victory} mode={mode} kda={kda} hsp={hsp} acs={acs} damageDelta={damageDelta} damagePerRound={damagePerRound}/>
       </div>
     </li>

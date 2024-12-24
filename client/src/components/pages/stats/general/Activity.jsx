@@ -9,7 +9,7 @@ const Activity = ({ matches }) => {
       <div className={styles.content}>
         <h2 className={sharedStyles.smallHeading}>Activity</h2>
         <div className={styles.heatmapContainer}>
-        <Heatmap matches={matches}/>
+          <Heatmap matches={matches}/>
         </div>
       </div>
     </div>

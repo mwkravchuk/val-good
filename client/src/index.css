@@ -8,8 +8,8 @@
 
 body {
   font-family: 'Open Sans';
-  background-color: var(--background-color-dark);
-  color: var(--text-color);
+  background-color: hsl(var(--background-color-dark));
+  color: hsl(var(--text-color));
 }
 
 a {
@@ -28,23 +28,23 @@ ul {
 /* Global variables */
 
 :root {
-  --primary-color: hsl(271, 26%, 43%);
-  --background-color: hsl(270, 7%, 33%);
-  --background-color-med: hsl(270, 7%, 25%);
-  --background-color-transparent: hsla(270, 7%, 33%, 30%);
-  --background-color-dark: hsl(270, 7%, 20%);
-  --background-color-dark-transparent: hsla(270, 7%, 20%, 90%);
-  --text-color: hsl(0, 0%, 100%);
-  --neutral-text-lighter: hsl(260, 3%, 90%);
-  --neutral-text: hsl(260, 3%, 82%);
-  --neutral-text-darker: hsl(260, 3%, 70%);
+  --primary-color: 271, 26%, 43%;
+  --background-color: 270, 7%, 33%;
+  --background-color-med: 270, 7%, 25%;
+  --background-color-transparent: 270, 7%, 33%, 30%;
+  --background-color-dark: 270, 7%, 20%;
+  --background-color-dark-transparent: 270, 7%, 20%;
+  --text-color: 0, 0%, 100%;
+  --neutral-text-lighter: 260, 3%, 90%;
+  --neutral-text: 260, 3%, 82%;
+  --neutral-text-darker: 260, 3%, 70%;
 
-  --victory-color: hsl(163, 100%, 56%);
+  --victory-color: 163, 100%, 56%;
   --victory-color-bg: 163, 25%, 31%;
-  --victory-color-shadow: hsl(163, 25%, 45%);
-  --defeat-color: hsl(352, 79%, 58%);
-  --defeat-color-bg:hsl(350, 33%, 34%);
-  --defeat-color-shadow: hsl(350, 33%, 48%);
+  --victory-color-shadow: 163, 25%, 45%;
+  --defeat-color: 352, 79%, 58%;
+  --defeat-color-bg: 350, 33%, 34%;
+  --defeat-color-shadow: 350, 33%, 48%;
 
   --font-size-small: 0.875rem; /* 14px */
   --font-size-base: 1rem;      /* 16px */

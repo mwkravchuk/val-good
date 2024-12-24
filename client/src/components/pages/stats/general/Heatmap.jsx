@@ -25,9 +25,9 @@ const Heatmap = ({ matches }) => {
   });
 
   const getColor = (count) => {
-    if (count === 0) return "#e0e0e0";
-    const intensity = Math.min(count / 5, 1);
-    return `rgba(0, 128, 0, ${intensity})`;
+    if (count === 0) return "hsl(var(--background-color-med))";
+    const intensity = Math.min(count / 10, 1);
+    return `hsla(var(--victory-color), ${intensity})`;
   };
 
   return (
@@ -39,7 +39,7 @@ const Heatmap = ({ matches }) => {
           style={{ backgroundColor: getColor(day.count) }}
           title={`${day.date}: ${day.count} matches`}
         >
-          {new Date(day.date).getDate()}
+          {parseInt(day.date.split("-")[2], 10)}
         </div>
       ))}
     </div>
