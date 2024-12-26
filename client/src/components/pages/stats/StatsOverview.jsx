@@ -62,6 +62,23 @@ const StatsOverview = ({ playerData }) => {
     }
   }, [playerData]);
 
+  useEffect(() => {
+    if (playerData) {
+      const fetchMatches = async () => {
+        setLoading(true);
+        try {
+          const matchesResponse = await axios.get(`/player/matches/${playerData.puuid}`);
+          console.log("Match list: ", matchesResponse.data.data);
+        } catch (error) {
+            console.error("Error fetching matches", error);
+        } finally {
+          setLoading(false);
+        }
+      }
+      fetchMatches();
+    }
+  }, [playerData]);
+
   const visibleMatches = filteredMatches.slice(0, numMatches);
 
   return (
