@@ -1,0 +1,10 @@
+.container {
+  margin-top: 10px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+}
+
+.footerText {
+  margin-left: 20px;
+}

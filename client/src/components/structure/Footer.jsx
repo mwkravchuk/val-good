@@ -1,7 +1,9 @@
+import styles from "./Footer.module.css";
+
 const Footer = () => {
   return (
-    <footer>
-      FOOTER: VAL GOOD. GET GOOD AT VAL. GOOD. AAAAAAAAAA
+    <footer className={styles.container}>
+      <span className={styles.footerText}>VAL-GOOD 2025.</span>
     </footer>
   );
 };

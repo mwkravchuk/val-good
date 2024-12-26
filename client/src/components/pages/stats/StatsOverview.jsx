@@ -15,6 +15,7 @@ const StatsOverview = ({ playerData }) => {
 
   const [matches, setMatches] = useState([]);
   const [filteredMatches, setFilteredMatches] = useState([]);
+  const [numMatches, setNumMatches] = useState(10);
   const [playerMMR, setPlayerMMR] = useState(null);
   const [selectedMode, setSelectedMode] = useState("All");
   const [loading, setLoading] = useState(false);
@@ -43,6 +44,7 @@ const StatsOverview = ({ playerData }) => {
     } else {
       setFilteredMatches(matches.filter((match) => match.meta.mode === selectedMode));
     }
+    setNumMatches(10);
   }, [selectedMode, matches]);
 
   useEffect(() => {
@@ -60,6 +62,8 @@ const StatsOverview = ({ playerData }) => {
     }
   }, [playerData]);
 
+  const visibleMatches = filteredMatches.slice(0, numMatches);
+
   return (
     <div className={styles.overviewContainer}>
       <div className={styles.overview}>
@@ -72,6 +76,7 @@ const StatsOverview = ({ playerData }) => {
                 className={styles.modeBtn}
                 style={{
                   borderBottomStyle: "solid",
+                  borderBottomWidth: "thick",
                   borderBottomColor: selectedMode === mode ? "hsl(var(--primary-color))" : "hsl(var(--background-color))",
                   fontWeight: selectedMode === mode ? "700" : "500",
                 }}
@@ -86,13 +91,23 @@ const StatsOverview = ({ playerData }) => {
             <GeneralStats matches={matches} playerMMR={playerMMR}/>
           </div>
           <div className={styles.rightCol}>
-            <Summary matches={filteredMatches}/>
+            <Summary matches={visibleMatches}/>
             {loading ? (
               <div className={styles.spinner}>
                 <CircularProgress />
               </div>
             ) : (
-              <MatchList matches={filteredMatches}/>
+              <div>
+                <MatchList matches={visibleMatches}/>
+                {numMatches < filteredMatches.length ?
+                  <button
+                    onClick={() => setNumMatches(numMatches + 10)}
+                  >
+                    Show more
+                  </button> : 
+                  ""
+                }
+              </div>
             )}
           </div>
         </div>
