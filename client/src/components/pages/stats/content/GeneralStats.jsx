@@ -1,6 +1,6 @@
-import RankedHistory from "./RankedHistory";
-import Activity from "./Activity";
-import Accuracy from "./Accuracy";
+import RankedHistory from "./general/RankedHistory";
+import Activity from "./general/Activity";
+import Accuracy from "./general/Accuracy";
 
 import styles from "./GeneralStats.module.css";
 

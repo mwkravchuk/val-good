@@ -1,4 +1,4 @@
-import { GlobalData }  from "../../../../contexts/GlobalDataProvider";
+import { GlobalData }  from "../../../../../contexts/GlobalDataProvider";
 
 import styles from "./RankedTable.module.css";
 

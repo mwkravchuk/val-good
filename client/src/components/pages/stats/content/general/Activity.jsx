@@ -1,6 +1,6 @@
 import Heatmap from "./Heatmap";
 
-import sharedStyles from "../../../../styles/Shared.module.css";
+import sharedStyles from "../../../../../styles/Shared.module.css";
 import styles from "./Activity.module.css";
 
 const Activity = ({ matches }) => {

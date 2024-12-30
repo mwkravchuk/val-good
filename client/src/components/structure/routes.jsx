@@ -1,5 +1,5 @@
 import LandingPage from "../pages/LandingPage";
-import StatsPage from "../pages/stats/StatsPage"
+import StatsPage from "../pages/StatsPage"
 
 const routes = [
   { path: "/", element: <LandingPage /> },

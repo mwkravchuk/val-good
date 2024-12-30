@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import RankedTable from "./RankedTable";
 
-import sharedStyles from "../../../../styles/Shared.module.css";
+import sharedStyles from "../../../../../styles/Shared.module.css";
 import styles from "./RankedHistory.module.css";
 
 const RankedHistory = ({ playerMMR, height }) => {

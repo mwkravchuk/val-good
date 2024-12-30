@@ -6,9 +6,6 @@
   gap: 40px;
 }
 
-.container > div {
-}
-
 .left {
   display: flex;
   flex-direction: column;

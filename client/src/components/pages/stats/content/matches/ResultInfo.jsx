@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import HorizontalBar from "../../../common/HorizontalBar.jsx";
+import HorizontalBar from "../../../../common/HorizontalBar.jsx";
 import RankProgress from "./RankProgress.jsx";
 
 import styles from "./ResultInfo.module.css";

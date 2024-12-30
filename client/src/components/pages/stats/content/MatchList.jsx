@@ -1,4 +1,4 @@
-import MatchItem from "./MatchItem";
+import MatchItem from "./matches/MatchItem";
 
 import { GlobalData } from "../../../../contexts/GlobalDataProvider";
 

@@ -1,8 +1,8 @@
-import { aggregateStats } from "../../../utils/aggregateStats";
+import { aggregateStats } from "../../../../utils/aggregateStats";
 
-import KDAVisual from "./KDAVisual";
-import RoleVisual from "./RoleVisual";
-import WinLossCircle from "../../external/WinLossCircle";
+import KDAVisual from "./summary/KDAVisual";
+import RoleVisual from "./summary/RoleVisual";
+import WinLossCircle from "../../../external/WinLossCircle";
 
 import styles from "./Summary.module.css";
 

@@ -2,7 +2,7 @@ import ResultInfo from "./ResultInfo";
 import AgentInfo from "./AgentInfo";
 import MapInfo from "./MapInfo";
 import DetailedInfo from "./DetailedInfo";
-import VerticalBar from "../../../common/VerticalBar";
+import VerticalBar from "../../../../common/VerticalBar";
 
 import styles from "./MatchItem.module.css";
 

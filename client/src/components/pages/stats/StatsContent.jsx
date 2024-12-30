@@ -2,14 +2,14 @@ import { useState, useEffect } from "react";
 import axios from "../../../../axiosConfig";
 import { GlobalData } from "../../../contexts/GlobalDataProvider";
 
-import GeneralStats from "./general/GeneralStats";
-import Summary from "./Summary";
-import MatchList from "./matches/MatchList";
+import GeneralStats from "./content/GeneralStats";
+import Summary from "./content/Summary";
+import MatchList from "./content/MatchList";
 
 import CircularProgress from "@mui/material/CircularProgress";
-import styles from "./StatsOverview.module.css";
+import styles from "./StatsContent.module.css";
 
-const StatsOverview = ({ playerData }) => {
+const StatsContent = ({ playerData }) => {
 
   const { gamemodes } = GlobalData();
 
@@ -133,4 +133,4 @@ const StatsOverview = ({ playerData }) => {
   );
 };
 
-export default StatsOverview;
+export default StatsContent;
