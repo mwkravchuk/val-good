@@ -28,6 +28,8 @@ export const aggregateStats = (matches) => {
   stats.winRate = (stats.wins / stats.totalGames) * 100;
   stats.kda = ((stats.kills + stats.assists) / stats.deaths).toFixed(2);
   stats.hsp = (stats.headshots / stats.totalshots) * 100;
+  stats.bsp = (stats.bodyshots / stats.totalshots) * 100;
+  stats.lsp = (stats.legshots / stats.totalshots) * 100;
 
   updateBestStats(stats);
 

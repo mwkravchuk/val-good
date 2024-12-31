@@ -9,7 +9,7 @@ const GeneralStats = ({ matches, playerMMR }) => {
     <div className={styles.container}>
       <RankedHistory playerMMR={playerMMR} />
       <Activity matches={matches}/>
-      <Accuracy />
+      <Accuracy matches={matches}/>
     </div>
   );
 };

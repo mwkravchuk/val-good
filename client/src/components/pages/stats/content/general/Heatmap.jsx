@@ -25,9 +25,9 @@ const Heatmap = ({ matches }) => {
   });
 
   const getColor = (count) => {
-    if (count === 0) return "hsl(var(--background-color-med))";
+    if (count === 0) return "hsl(var(--primary-color))";
     const intensity = Math.min(count / 10, 1);
-    return `hsla(var(--victory-color), ${intensity})`;
+    return `hsla(var(--primary-color-light), ${intensity})`;
   };
 
   return (
