@@ -18,7 +18,6 @@ const Accuracy = ({ matches }) => {
     <div className={styles.container}>
       <div className={styles.content}>
         <h2 className={sharedStyles.smallHeading}>Accuracy</h2>
-        
         <AccuracyChart data={chartData}/>
       </div>
     </div>
