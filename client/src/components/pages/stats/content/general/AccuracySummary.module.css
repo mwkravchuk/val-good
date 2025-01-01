@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  color: hsl(var(--neutral-text));
+  margin: 10px 0;
+}
+
+.heading {
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  margin-left: 10px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.item {
+  background-color: hsl(var(--background-color-med));
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 5px;
+}
+
+.variable {
+  color: hsl(var(--text-color));
+  font-weight: 600;
+}
+
+.dark {
+  color: hsl(var(--neutral-text-darker));
+}

@@ -1,5 +1,5 @@
 .table {
-  margin: 10px 0;
+  margin: 10px 0px;
   width: 100%;
   color: hsl(var(--neutral-text));
   font-size: var(--font-size-small);
