@@ -19,6 +19,10 @@
   color: hsl(var(--defeat-color));
 }
 
+.drawText {
+  color: hsl(var(--draw-color));
+}
+
 .timeAgo {
   font-size: .8em;
   color: hsl(var(--neutral-text));

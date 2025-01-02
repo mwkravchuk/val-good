@@ -23,26 +23,36 @@ const MatchItem = ({ match, rankTable }) => {
   const roundsWon = team === 'Blue' ? blueRounds : redRounds;
   const roundsLost = team === 'Blue' ? redRounds : blueRounds;
 
-  const isVictory = () => {
+  const getResult = () => {
     const selfTeam = team;
+    if (mode === "Deathmatch") {
+      return "None";
+    }
+    if (blueRounds === redRounds) {
+      return "Draw";
+    }
     const winningTeam = blueRounds > redRounds ? "Blue" : "Red";
-    return mode === "Deathmatch" || selfTeam === winningTeam;
+    return selfTeam === winningTeam ? "Victory" : "Defeat";
   }
 
-  const victory = isVictory();
+  const result = getResult();
 
   return (
-    <li className={`${styles.matchContainer} ${victory ? styles.matchVictory : styles.matchDefeat}`}>
+    <li className={`${styles.matchContainer} ${result === "Victory" ? styles.matchVictory : result === "Defeat" ? styles.matchDefeat : styles.matchDraw}`}>
       <div className={styles.left}>
-        <ResultInfo victory={victory} mode={mode} timestamp={started_at} tier={tier} rankTable={rankTable}/>
-        <AgentInfo victory={victory} kills={kills} deaths={deaths} assists={assists} hsp={hsp} agentId={agentId} />
+        <ResultInfo result={result} mode={mode} timestamp={started_at} tier={tier} rankTable={rankTable}/>
+        <AgentInfo kills={kills} deaths={deaths} assists={assists} hsp={hsp} agentId={agentId} />
       </div>
       <div className={styles.middle}>
-        <MapInfo victory={victory} roundsWon={roundsWon} roundsLost={roundsLost} name={map.name}/>
+        <MapInfo result={result} roundsWon={roundsWon} roundsLost={roundsLost} name={map.name}/>
       </div>
       <div className={styles.right}>
-        <VerticalBar color={victory ? "hsl(var(--victory-color-shadow))" : "hsl(var(--defeat-color-shadow))"} margin={"8px"} height={"80%"}/>
-        <DetailedInfo victory={victory} mode={mode} kda={kda} hsp={hsp} acs={acs} damageDelta={damageDelta} damagePerRound={damagePerRound}/>
+        <VerticalBar color={result === "Victory"
+              ? "hsl(var(--victory-color-shadow))"
+              : result === "Defeat"
+              ? "hsl(var(--defeat-color-shadow))"
+              : "hsl(var(--draw-color-shadow))"} margin={"8px"} height={"80%"}/>
+        <DetailedInfo mode={mode} kda={kda} hsp={hsp} acs={acs} damageDelta={damageDelta} damagePerRound={damagePerRound}/>
       </div>
     </li>
   );

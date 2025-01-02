@@ -31,3 +31,7 @@
 .defeat {
   color: hsl(var(--defeat-color));
 }
+
+.draw {
+  color: hsl(var(--draw-color));
+}

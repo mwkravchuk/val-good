@@ -9,6 +9,7 @@ import styles from "./Summary.module.css";
 const Summary = ({ matches }) => {
 
   const stats = aggregateStats(matches);
+  console.log("Stats: ", stats);
 
   return (
     <div className={styles.container}>
@@ -17,10 +18,10 @@ const Summary = ({ matches }) => {
       </div>
       <div className={styles.middle}>
         <WinLossCircle wins={stats.wins} losses={stats.losses} />
-        <span className={styles.WL}>{stats.wins}W {stats.losses}L</span>
+        <span className={styles.WL}>{stats.wins}W {stats.losses}L {stats.draws}D</span>
       </div>
       <div className={styles.right}>
-        <RoleVisual favoriteAgent={stats.favoriteAgent}/>
+        <RoleVisual stats={stats}/>
       </div>
     </div>
   );

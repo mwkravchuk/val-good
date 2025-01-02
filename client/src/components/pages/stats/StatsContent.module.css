@@ -53,3 +53,20 @@
   flex-basis: 65%;
 }
 
+.matches {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn {
+  color: hsl(var(--text-color));
+  background-color: hsl(var(--primary-color));
+  border: none;
+  padding: 1.15rem 0;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: hsla(var(--primary-color), 50%);
+}
+

@@ -15,7 +15,7 @@ const StatsContent = ({ playerData }) => {
 
   const [matches, setMatches] = useState([]);
   const [filteredMatches, setFilteredMatches] = useState([]);
-  const [numMatches, setNumMatches] = useState(10);
+  const [numMatches, setNumMatches] = useState(7);
   const [playerMMR, setPlayerMMR] = useState(null);
   const [selectedMode, setSelectedMode] = useState("All");
   const [loading, setLoading] = useState(false);
@@ -44,7 +44,6 @@ const StatsContent = ({ playerData }) => {
     } else {
       setFilteredMatches(matches.filter((match) => match.meta.mode === selectedMode));
     }
-    setNumMatches(10);
   }, [selectedMode, matches]);
 
   useEffect(() => {
@@ -114,10 +113,11 @@ const StatsContent = ({ playerData }) => {
                 <CircularProgress />
               </div>
             ) : (
-              <div>
+              <div className={styles.matches}>
                 <MatchList matches={visibleMatches}/>
                 {numMatches < filteredMatches.length ?
                   <button
+                    className={styles.btn}
                     onClick={() => setNumMatches(numMatches + 10)}
                   >
                     Show more
