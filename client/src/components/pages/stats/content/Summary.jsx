@@ -13,16 +13,12 @@ const Summary = ({ matches }) => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.left}>
-        <KDAVisual stats={stats}/>
-      </div>
+      <KDAVisual stats={stats}/>
       <div className={styles.middle}>
         <WinLossCircle wins={stats.wins} losses={stats.losses} />
         <span className={styles.WL}>{stats.wins}W {stats.losses}L {stats.draws}D</span>
       </div>
-      <div className={styles.right}>
-        <RoleVisual stats={stats}/>
-      </div>
+      <RoleVisual stats={stats}/>
     </div>
   );
 };

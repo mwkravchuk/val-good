@@ -8,7 +8,7 @@ const KDAVisual = ({ stats }) => {
   const avgAssists = (stats.assists / stats.totalGames).toFixed(1);
 
   return (
-    <div>
+    <div className={styles.container}>
       <span className={styles.KDA}>{totalKDA} : 1</span>
       <div className={styles.kda}>
         <span className={styles.kills}>{avgKills}</span>

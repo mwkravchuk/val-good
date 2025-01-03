@@ -1,8 +1,11 @@
+import { GlobalData } from "../../../../../contexts/GlobalDataProvider";
 
+import styles from "./RoleVisual.module.css";
 
 const RoleVisual = ({ stats }) => {
 
-  const agents = stats.agents;
+  const { agents } = GlobalData();
+  const playedAgents = stats.agents;
 
   const getTopAgents = (agents) => {
     // Convert agents object into an array with additional calculated fields
@@ -11,6 +14,7 @@ const RoleVisual = ({ stats }) => {
       games: stats.games,
       wins: stats.wins,
       losses: stats.losses,
+      draws: stats.draws,
       winPercentage: ((stats.wins / stats.games) * 100).toFixed(2), // Calculate win percentage
     }));
   
@@ -19,26 +23,32 @@ const RoleVisual = ({ stats }) => {
     return topAgents;
   };
   
-  const topAgents = getTopAgents(agents);
-  
-  topAgents.forEach((agent) => {
-    console.log(
-      `${agent.name}: ${agent.games} games, ${agent.winPercentage}% win rate`
-    );
-  });
+  const topAgents = getTopAgents(playedAgents);
+
+  const getWinRateClass = (winRate) => {
+    if (winRate > 55) return styles.green;
+    if (winRate < 45) return styles.red;
+    return styles;
+  };
 
   return (
-    <div>
+    <div className={styles.container}>
+      <span className={styles.heading}>From {stats.totalGames} most recent games</span>
       <div>
-        From {stats.totalGames} most recent games
-      </div>
-      <div>
-        {topAgents.map((agent) => (
-          <div key={agent.name}>
-            <span>{agent.name}</span>
-            <span>&#40;{agent.wins} / {agent.losses}&#41;</span>
-          </div>
-        ))}
+        {topAgents.map((agent) => {
+          const matchedAgent = agents.find((apiAgent) => apiAgent.displayName === agent.name);
+
+          return (
+            <div className={styles.item} key={agent.name}>
+              {matchedAgent && (
+                <img src={matchedAgent.displayIconSmall}
+                     alt={`${agent.name} icon`}/>
+              )}
+              <span className={getWinRateClass(Math.round((agent.wins / agent.games) * 100))}>{Math.round((agent.wins / agent.games) * 100)}%</span>
+              <span className={styles.WLD}>&#40;{agent.wins}W {agent.losses}L {agent.draws}D&#41;</span>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

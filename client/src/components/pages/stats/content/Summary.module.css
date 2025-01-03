@@ -6,22 +6,15 @@
   gap: 40px;
 }
 
-.left {
-  display: flex;
-  flex-direction: column;
-  margin-left: 20px;
+.container > div {
+  height: 100%;
 }
 
 .middle {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.right {
-  display: flex;
-  flex-direction: column;
-
+  justify-content: center;
 }
 
 .WL {
