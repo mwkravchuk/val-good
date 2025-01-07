@@ -16,7 +16,6 @@ const RankedHistory = ({ playerMMR, height }) => {
   const visibleMMR = showAll ? sortedMMR : sortedMMR.slice(0, 5);
 
   const currentRR = playerMMR?.current?.rr ?? "N/A";
-  const peakTierName = playerMMR?.peak?.tier?.name ?? "N/A";
 
   console.log("player MMR", playerMMR);
 

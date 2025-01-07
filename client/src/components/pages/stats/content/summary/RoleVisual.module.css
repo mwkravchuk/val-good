@@ -1,39 +1,9 @@
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  width: 100%;
 }
 
 .heading {
-  font-size: var(--font-size-small);
-}
-
-.item {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-top: 5px;
-  gap: 5px;
-  font-size: var(--font-size-small);
-}
-
-.item img {
-  width: 24px;
-  height: 24px;
-}
-
-.WLD {
-  color: hsl(var(--neutral-text-darker));
-}
-
-.green {
-  color: hsl(var(--victory-color));
-}
-
-.red {
-  color: hsl(var(--defeat-color));
-}
-
-.neutral {
-  color: hsl(var(--neutral-text));
+  font-size: var(--font-size-base);
 }

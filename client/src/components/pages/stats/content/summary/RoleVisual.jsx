@@ -1,55 +1,68 @@
 import { GlobalData } from "../../../../../contexts/GlobalDataProvider";
+import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from "recharts";
 
 import styles from "./RoleVisual.module.css";
 
 const RoleVisual = ({ stats }) => {
 
   const { agents } = GlobalData();
-  const playedAgents = stats.agents;
 
-  const getTopAgents = (agents) => {
-    // Convert agents object into an array with additional calculated fields
-    const agentArray = Object.entries(agents).map(([name, stats]) => ({
-      name,
-      games: stats.games,
-      wins: stats.wins,
-      losses: stats.losses,
-      draws: stats.draws,
-      winPercentage: ((stats.wins / stats.games) * 100).toFixed(2), // Calculate win percentage
-    }));
-  
-    const sortedAgents = agentArray.sort((a, b) => b.games - a.games);  
-    const topAgents = sortedAgents.slice(0, 3);
-    return topAgents;
+  const gamesPerRole = {
+    Duelist: { games: 0, icon: null },
+    Initiator: { games: 0, icon: null },
+    Sentinel: { games: 0, icon: null },
+    Controller: { games: 0, icon: null },
   };
-  
-  const topAgents = getTopAgents(playedAgents);
 
-  const getWinRateClass = (winRate) => {
-    if (winRate > 55) return styles.green;
-    if (winRate < 45) return styles.red;
-    return styles;
-  };
+  // Get icons for each role
+  agents.forEach((agent) => {
+    if (agent.role) {
+      const { displayName: roleName, displayIcon } = agent.role;
+
+      if (gamesPerRole[roleName] && !gamesPerRole[roleName].icon) {
+        gamesPerRole[roleName].icon = displayIcon;
+      }
+    }
+  });
+
+  // Count the number of games per each role
+  for (const agentName in stats.agents) {
+    const games = stats.agents[agentName].games;
+    const agentData = agents.find((agent) => agent.displayName === agentName);
+
+    if (agentData && agentData.role) {
+      const { displayName: roleName } = agentData.role; // Role of the agent
+      gamesPerRole[roleName].games += games;
+    }
+  }
+
+  // Convert role data to an array suitable for Recharts
+  const data = Object.entries(gamesPerRole).map(([role, { games, icon }]) => ({
+    role,
+    games,
+    icon,
+  }));
+
+  console.log("games per role:", gamesPerRole);
 
   return (
     <div className={styles.container}>
-      <span className={styles.heading}>From {stats.totalGames} most recent games</span>
-      <div>
-        {topAgents.map((agent) => {
-          const matchedAgent = agents.find((apiAgent) => apiAgent.displayName === agent.name);
-
-          return (
-            <div className={styles.item} key={agent.name}>
-              {matchedAgent && (
-                <img src={matchedAgent.displayIconSmall}
-                     alt={`${agent.name} icon`}/>
-              )}
-              <span className={getWinRateClass(Math.round((agent.wins / agent.games) * 100))}>{Math.round((agent.wins / agent.games) * 100)}%</span>
-              <span className={styles.WLD}>&#40;{agent.wins}W {agent.losses}L {agent.draws}D&#41;</span>
-            </div>
-          );
-        })}
-      </div>
+      <ResponsiveContainer width="100%">
+        <BarChart data={data} layout="vertical" margin={{ left: -20, top: 10, bottom: 10, right: 20}}>
+          <XAxis type="number" hide />
+          <YAxis type="category" dataKey="role" tickLine={false} axisLine={false} tick={
+            ({ x, y, payload }) => {
+              const role = data.find((d) => d.role === payload.value);
+              return (
+                <foreignObject x={x - 15} y={y - 10} width={30} height={30}>
+                  {role?.icon && <img src={role.icon} alt={payload.value} style={{ width: "15px", height: "15px"}} />}
+                </foreignObject>
+              );  
+            }}
+          />
+          <Bar dataKey="games" fill="hsl(var(--primary-color))" background={{ fill: "hsla(var(--primary-color), 20%)" }}/>
+        </BarChart>
+      </ResponsiveContainer>
     </div>
   );
 };

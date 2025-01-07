@@ -18,7 +18,7 @@ const AccuracyChart = ({ data }) => {
         <ResponsiveContainer>
           <LineChart data={data}>
             <YAxis domain={yDomain} label={{ value: "HS%", angle: -90, position: "insideLeft", fill: "hsl(var(--text-color))" }} tick={{ fill: "hsl(var(--text-color))", fontSize: 12 }}/>
-            <Line type="monotone" dataKey="accuracy" stroke="hsl(var(--primary-color-light))" strokeWidth={3.5} dot={false} />
+            <Line type="monotone" dataKey="accuracy" stroke="hsl(var(--primary-color))" strokeWidth={3.5} dot={false} />
           </LineChart>
         </ResponsiveContainer>
       </div>

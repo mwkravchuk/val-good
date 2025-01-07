@@ -31,7 +31,7 @@ const Heatmap = ({ matches }) => {
   const getColor = (count) => {
     if (count === 0) return "hsl(var(--background-color))";
     const intensity = Math.min(count / 8, 1);
-    return `hsla(var(--primary-color-light), ${intensity})`;
+    return `hsla(var(--primary-color), ${intensity})`;
   };
 
   const handlePreviousMonth = () => setMonthOffset((prev) => prev - 1);
