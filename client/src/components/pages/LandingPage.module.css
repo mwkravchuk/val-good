@@ -3,3 +3,24 @@
   justify-content: center;
   align-items: center;
 }
+
+.form {
+  display: flex;
+  flex-direction: row;
+  margin-top: 50px;
+}
+
+.input {
+  padding: 10px 10px;
+  border: none;
+  background-color: hsl(var(--background-color));
+  color: hsl(var(--text-color));
+}
+
+.input:focus {
+  outline: none;
+}
+
+.input::placeholder {
+  color: hsl(var(--neutral-text));
+}

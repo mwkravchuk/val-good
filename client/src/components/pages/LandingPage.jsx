@@ -11,15 +11,20 @@ const LandingPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    navigate('/stats', { state: { username, tagline } });
+    if (username.trim() && tagline.trim()) {
+      navigate('/stats', { state: { username, tagline } });
+    } else {
+      alert("Please fill in both fields.");
+    }
   }
 
   return (
     <div className={styles.screenContainer}>
       <div>
-        <form onSubmit={handleSubmit}>
+        <form className={styles.form} onSubmit={handleSubmit}>
           <div>
-            <input type="text"
+            <input className={styles.input}
+                  type="text"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   placeholder="Username"
@@ -27,14 +32,15 @@ const LandingPage = () => {
             />
           </div>
           <div>
-            <input type="text"
+            <input className={styles.input}
+                    type="text"
                     value={tagline}
                     onChange={(e) => setTagline(e.target.value)}
                     placeholder="Tagline"
                     required
               />
           </div>
-          <button type="submit">Submit</button>
+          <button type="submit" style={{ display: "none" }} />
         </form>
       </div>
     </div>

@@ -10,7 +10,6 @@ import styles from "./Summary.module.css";
 const Summary = ({ matches }) => {
 
   const stats = aggregateStats(matches);
-  console.log("Stats: ", stats);
 
   return (
     <div className={styles.container}>

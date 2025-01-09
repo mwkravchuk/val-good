@@ -35,3 +35,13 @@
   flex-direction: column;
   gap: 5px;
 }
+
+.currRank {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.h3 {
+  text-align: center;
+}

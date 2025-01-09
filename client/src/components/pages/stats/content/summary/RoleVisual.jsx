@@ -50,8 +50,6 @@ const RoleVisual = ({ stats }) => {
     games: totalGames > 0 ? (role.games / totalGames) * 100 : 0, // Normalize and convert to percentage
   }));
 
-  console.log("games per role:", gamesPerRole);
-
   return (
     <div className={styles.container}>
       <ResponsiveContainer width="100%">

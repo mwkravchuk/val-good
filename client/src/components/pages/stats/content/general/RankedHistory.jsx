@@ -17,8 +17,6 @@ const RankedHistory = ({ playerMMR, height }) => {
 
   const currentRR = playerMMR?.current?.rr ?? "N/A";
 
-  console.log("player MMR", playerMMR);
-
   const [peakTierImage, setPeakTierImage] = useState("");
   const [currTierImage, setCurrTierImage] = useState("");
   
@@ -40,14 +38,14 @@ const RankedHistory = ({ playerMMR, height }) => {
         <h2 className={sharedStyles.smallHeading}>Competitive</h2>
         <div className={styles.summary}>
           <div className={styles.item}>
-            <h3>Current:</h3>
-            <div>
+            <h3 className={styles.h3}>Current</h3>
+            <div className={styles.currRank}>
               <img className={styles.img} src={currTierImage} alt="" />
               <span>{currentRR}rr</span>
             </div>
           </div>
           <div className={styles.item}>
-            <h3>Peak:</h3>
+            <h3 className={styles.h3}>Peak</h3>
             <div>
               <img className={styles.img} src={peakTierImage} alt="" />
             </div>

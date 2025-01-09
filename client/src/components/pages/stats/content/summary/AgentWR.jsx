@@ -5,7 +5,6 @@ import styles from "./AgentWR.module.css";
 const AgentWR = ({ stats }) => {
 
     const { agents } = GlobalData();
-    console.log("agents: ", agents);
     const playedAgents = stats.agents;
   
     const getTopAgents = (agents) => {

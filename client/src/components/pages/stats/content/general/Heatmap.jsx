@@ -40,12 +40,12 @@ const Heatmap = ({ matches }) => {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-          <button onClick={handlePreviousMonth}>Previous</button>
+          <button className={styles.btn} onClick={handlePreviousMonth}>Previous</button>
           <span className={styles.month}>
             {currentMonthDate.toLocaleString("default", { month: "long" })}{" "}
             {currentMonthDate.getFullYear()}
           </span>
-          <button onClick={handleNextMonth} disabled={monthOffset === 0}>
+          <button className={styles.btn} onClick={handleNextMonth} disabled={monthOffset === 0}>
             Next
           </button>
         </div>

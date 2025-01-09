@@ -51,7 +51,6 @@ const StatsContent = ({ playerData }) => {
       const fetchMMR = async () => {
         try {
           const mmrResponse = await axios.get(`/player/mmr/${playerData.puuid}`);
-          console.log("Player MMR: ", mmrResponse.data.data);
           setPlayerMMR(mmrResponse.data.data);
         } catch (error) {
           console.error("Error fetching player MMR", error);
@@ -61,6 +60,7 @@ const StatsContent = ({ playerData }) => {
     }
   }, [playerData]);
 
+  /*
   useEffect(() => {
     if (playerData) {
       const fetchMatches = async () => {
@@ -77,7 +77,8 @@ const StatsContent = ({ playerData }) => {
       fetchMatches();
     }
   }, [playerData]);
-
+  */
+ 
   const visibleMatches = filteredMatches.slice(0, numMatches);
 
   return (

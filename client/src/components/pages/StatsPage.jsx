@@ -16,6 +16,7 @@ const StatsPage = () => {
       const fetchPlayerData = async () => {
         try {
           const response = await axios.get(`/player/puuid?username=${username}&tagline=${tagline}`);
+          console.log(response.data.data);
           setPlayerData(response.data.data);
         } catch (error) {
           console.error("Error fetching player data", error);

@@ -38,3 +38,15 @@
   text-align: center;
   cursor: pointer;
 }
+
+.btn {
+  background: none;
+  color: hsl(var(--neutral-text));
+  border: none;
+}
+
+.btn:hover {
+  background-color: hsl(var(--background-color-med));
+  color: hsl(var(--text-color));
+  cursor: pointer;
+}
