@@ -43,16 +43,23 @@ const RoleVisual = ({ stats }) => {
     icon,
   }));
 
+  const totalGames = data.reduce((sum, role) => sum + role.games, 0);
+
+  const normalizedData = data.map((role) => ({
+    ...role,
+    games: totalGames > 0 ? (role.games / totalGames) * 100 : 0, // Normalize and convert to percentage
+  }));
+
   console.log("games per role:", gamesPerRole);
 
   return (
     <div className={styles.container}>
       <ResponsiveContainer width="100%">
-        <BarChart data={data} layout="vertical" margin={{ left: -20, top: 10, bottom: 10, right: 20}}>
-          <XAxis type="number" hide />
+        <BarChart data={normalizedData} layout="vertical" margin={{ left: -20, top: 10, bottom: 10, right: 20}}>
+          <XAxis type="number" domain={[0, 100]} hide />
           <YAxis type="category" dataKey="role" tickLine={false} axisLine={false} tick={
             ({ x, y, payload }) => {
-              const role = data.find((d) => d.role === payload.value);
+              const role = normalizedData.find((d) => d.role === payload.value);
               return (
                 <foreignObject x={x - 15} y={y - 10} width={30} height={30}>
                   {role?.icon && <img src={role.icon} alt={payload.value} style={{ width: "15px", height: "15px"}} />}
