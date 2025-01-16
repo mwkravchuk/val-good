@@ -2,11 +2,14 @@ import { useState, useEffect } from "react";
 import axios from "../../../../axiosConfig";
 import { GlobalData } from "../../../contexts/GlobalDataProvider";
 
+import Skeleton from "@mui/material/Skeleton";
+import CircularProgress from "@mui/material/CircularProgress";
+
+import GamemodeSelector from "./content/GamemodeSelector";
 import GeneralStats from "./content/GeneralStats";
 import Summary from "./content/Summary";
 import MatchList from "./content/MatchList";
 
-import CircularProgress from "@mui/material/CircularProgress";
 import styles from "./StatsContent.module.css";
 
 const StatsContent = ({ playerData }) => {
@@ -18,12 +21,16 @@ const StatsContent = ({ playerData }) => {
   const [numMatches, setNumMatches] = useState(7);
   const [playerMMR, setPlayerMMR] = useState(null);
   const [selectedMode, setSelectedMode] = useState("All");
-  const [loading, setLoading] = useState(false);
+  const [loadingMatches, setLoadingMatches] = useState(true);
+  const [loadingMMR, setLoadingMMR] = useState(true);
+
+  const globalLoading = loadingMatches || loadingMMR;
+
 
   useEffect(() => {
     if (playerData) {
       const fetchMatches = async () => {
-        setLoading(true);
+        setLoadingMatches(true);
         try {
           const matchesResponse = await axios.get(`/player/stored-matches/${playerData.puuid}`);
           console.log("Matches: ", matchesResponse.data.data);
@@ -31,7 +38,7 @@ const StatsContent = ({ playerData }) => {
         } catch (error) {
             console.error("Error fetching matches", error);
         } finally {
-          setLoading(false);
+          setLoadingMatches(false);
         }
       }
       fetchMatches();
@@ -49,11 +56,14 @@ const StatsContent = ({ playerData }) => {
   useEffect(() => {
     if (playerData) {
       const fetchMMR = async () => {
+        setLoadingMMR(true);
         try {
           const mmrResponse = await axios.get(`/player/mmr/${playerData.puuid}`);
           setPlayerMMR(mmrResponse.data.data);
         } catch (error) {
           console.error("Error fetching player MMR", error);
+        } finally {
+          setLoadingMMR(false);
         }
       };
       fetchMMR();
@@ -84,48 +94,54 @@ const StatsContent = ({ playerData }) => {
   return (
     <div className={styles.overviewContainer}>
       <div className={styles.overview}>
-        <div className={styles.modesContainer}>
-          <div className={styles.modes}>
-            {gamemodes.map((mode) => (
-              <button
-                key={mode}
-                onClick={() => setSelectedMode(mode)}
-                className={styles.modeBtn}
-                style={{
-                  borderBottomStyle: "solid",
-                  borderBottomWidth: "thick",
-                  borderBottomColor: selectedMode === mode ? "hsl(var(--primary-color))" : "hsl(var(--background-color))",
-                  fontWeight: selectedMode === mode ? "700" : "500",
-                }}
-              >
-                {mode}
-              </button>
-            ))}
-          </div>
-        </div>
+        {globalLoading ? (
+          <Skeleton variant="rectangular" width="100%" height={50} style={{ marginBottom: ".75em" }} />
+        ) : (
+          <GamemodeSelector gamemodes={gamemodes} selectedMode={selectedMode} onSelectMode={setSelectedMode} />
+        )}
         <div className={styles.cols}>
           <div className={styles.leftCol}>
-            <GeneralStats matches={matches} playerMMR={playerMMR}/>
+            {globalLoading ? (
+              <>
+                <Skeleton variant="rectangular" width="100%" height={336} />
+                <Skeleton variant="rectangular" width="100%" height={260} />
+                <Skeleton variant="rectangular" width="100%" height={367} />
+              </>
+            ) : (
+              <GeneralStats matches={matches} playerMMR={playerMMR}/>
+            )}
           </div>
           <div className={styles.rightCol}>
-            <Summary matches={visibleMatches}/>
-            {loading ? (
-              <div className={styles.spinner}>
-                <CircularProgress />
-              </div>
+            {globalLoading ? (
+              <>
+                <Skeleton variant="rectangular" width="100%" height={150} />
+                {Array.from({ length: 7 }).map((_, index) => (
+                  <Skeleton
+                    key={index}
+                    variant="rectangular"
+                    animation="wave"
+                    width="100%"
+                    height={90}
+                    style={{ marginBottom: 10 }}
+                  />
+                ))}
+              </>
             ) : (
-              <div className={styles.matches}>
-                <MatchList matches={visibleMatches}/>
-                {numMatches < filteredMatches.length ?
-                  <button
-                    className={styles.btn}
-                    onClick={() => setNumMatches(numMatches + 10)}
-                  >
-                    Show more
-                  </button> : 
-                  ""
-                }
-              </div>
+              <>
+                <Summary matches={visibleMatches}/>
+                <div className={styles.matches}>
+                  <MatchList matches={visibleMatches}/>
+                  {numMatches < filteredMatches.length ?
+                    <button
+                      className={styles.btn}
+                      onClick={() => setNumMatches(numMatches + 10)}
+                    >
+                      Show more
+                    </button> : 
+                    ""
+                  }
+                </div>
+              </>
             )}
           </div>
         </div>

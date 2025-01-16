@@ -1,0 +1,26 @@
+.modesContainer {
+  height: 50px;
+  background-color: hsl(var(--background-color));
+  margin-bottom: .75em;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+
+.modes {
+  display: flex;
+  gap: 5px;
+  width: 100%;
+ 
+}
+
+.modeBtn {
+  flex: 1;
+  border: none;
+  color: hsl(var(--text-color));
+  background: none;
+}
+
+.modeBtn:hover {
+  cursor: pointer;
+}
