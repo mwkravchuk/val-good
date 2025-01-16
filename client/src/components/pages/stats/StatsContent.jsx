@@ -3,7 +3,6 @@ import axios from "../../../../axiosConfig";
 import { GlobalData } from "../../../contexts/GlobalDataProvider";
 
 import Skeleton from "@mui/material/Skeleton";
-import CircularProgress from "@mui/material/CircularProgress";
 
 import GamemodeSelector from "./content/GamemodeSelector";
 import GeneralStats from "./content/GeneralStats";
