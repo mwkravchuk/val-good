@@ -29,7 +29,6 @@ const StatsContent = ({ playerData }) => {
   useEffect(() => {
     if (playerData) {
       const fetchMatches = async () => {
-        setLoadingMatches(true);
         try {
           const matchesResponse = await axios.get(`/player/stored-matches/${playerData.puuid}`);
           console.log("Matches: ", matchesResponse.data.data);
@@ -55,7 +54,6 @@ const StatsContent = ({ playerData }) => {
   useEffect(() => {
     if (playerData) {
       const fetchMMR = async () => {
-        setLoadingMMR(true);
         try {
           const mmrResponse = await axios.get(`/player/mmr/${playerData.puuid}`);
           setPlayerMMR(mmrResponse.data.data);

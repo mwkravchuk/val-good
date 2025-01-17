@@ -1,10 +1,18 @@
 import styles from "./GamemodeSelector.module.css";
 
 const GamemodeSelector = ({ gamemodes, selectedMode, onSelectMode }) => {
+
+  console.log("Gamemodes: ", gamemodes);
+  // const [expanded, setExpanded] = useState(false);
+
+  const primaryModes = ["All", "Competitive", "Standard", "Deathmatch", "Team Deathmatch"];
+  // const additionalModes = gamemodes.filter((mode) => !primaryModes.includes(mode));
+
   return (
     <div className={styles.modesContainer}>
       <div className={styles.modes}>
-        {gamemodes.map((mode) => (
+        {/* Render primary modes */}
+        {primaryModes.map((mode) => (
           <button
             key={mode}
             onClick={() => onSelectMode(mode)}

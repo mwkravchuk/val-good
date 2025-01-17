@@ -41,7 +41,7 @@ const RankedHistory = ({ playerMMR, height }) => {
             <h3 className={styles.h3}>Current</h3>
             <div className={styles.currRank}>
               <img className={styles.img} src={currTierImage} alt="" />
-              <span>{currentRR}rr</span>
+              <span>{currentRR} rr</span>
             </div>
           </div>
           <div className={styles.item}>

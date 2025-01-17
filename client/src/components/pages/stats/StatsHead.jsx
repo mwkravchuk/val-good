@@ -1,6 +1,8 @@
 import { useState, useEffect, useMemo } from "react";
 import axios from "../../../../axiosConfig";
 
+import Skeleton from "@mui/material/Skeleton";
+
 import styles from "./StatsHead.module.css";
 
 const formatDate = (utcString) => {
@@ -32,6 +34,7 @@ const StatsHead = ({ playerInfo, playerData }) => {
   const lastUpdated = useMemo(() => formatDate(playerData?.updated_at), [playerData?.updated_at]);
 
   const [cardArt, setCardArt] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (playerData) {
@@ -40,7 +43,9 @@ const StatsHead = ({ playerInfo, playerData }) => {
           const cardArtResponse = await axios.get(`/player/card/${playerData.card}`);
           setCardArt(cardArtResponse.data.data);
         } catch (error) {
-            console.error("Error fetching card art", error);
+          console.error("Error fetching card art", error);
+        } finally {
+          setLoading(false);
         }
       }
       fetchCardArt();
@@ -48,18 +53,30 @@ const StatsHead = ({ playerInfo, playerData }) => {
   }, [playerData]);
 
   return (
-    <div
-      className={styles.container}
-      style={{ backgroundImage: cardArt ? `linear-gradient(to bottom, hsl(var(--background-color-transparent)), hsl(var(--background-color-dark-transparent))), url(${cardArt.wideArt})` : "none"}}>
-      <div className={styles.head}>
-        <div className={styles.infoContainer}>
-          <span className={styles.big}>{playerInfo[0]} #{playerInfo[1]}</span>
-          <span>{playerData?.region?.toUpperCase()} {getFlag(playerData?.region)}</span>
-          <span>Level {playerData?.account_level}</span>
-          <span className={styles.lastUpdated}>Last updated: {lastUpdated}</span>
+    <>
+      {loading ? (
+        <Skeleton variant="rectangular" width="100%" height={300} style={{ marginBottom: ".75em" }} />
+      ) : (
+        <div
+          className={styles.container}
+          style={{ backgroundImage: cardArt
+          ? `linear-gradient(to bottom, hsl(var(--background-color-transparent)), hsl(var(--background-color-dark-transparent))),
+             linear-gradient(to top, hsl(var(--background-color-dark-transparent)), hsl(var(--background-color-transparent))),
+             url(${cardArt.wideArt})`
+          : "none",
+          }}
+        >
+          <div className={styles.head}>
+            <div className={styles.infoContainer}>
+              <span className={styles.big}>{playerInfo[0]} #{playerInfo[1]}</span>
+              <span>{playerData?.region?.toUpperCase()} {getFlag(playerData?.region)}</span>
+              <span>Level {playerData?.account_level}</span>
+              <span className={styles.lastUpdated}>Last updated: {lastUpdated}</span>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 

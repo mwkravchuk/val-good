@@ -9,13 +9,13 @@
 
 .modes {
   display: flex;
-  gap: 5px;
+  gap: 20px;
   width: 100%;
  
 }
 
 .modeBtn {
-  flex: 1;
+  min-width: 75px;
   border: none;
   color: hsl(var(--text-color));
   background: none;
