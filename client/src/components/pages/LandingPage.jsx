@@ -1,20 +1,21 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import styles from "./LandingPage.module.css";
 
 const LandingPage = () => {
   
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
-  const [tagline, setTagline] = useState("");
+  const [input, setInput] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (username.trim() && tagline.trim()) {
-      navigate('/stats', { state: { username, tagline } });
+
+    const [username, tagline] = input.split("#");
+    if (username?.trim() && tagline?.trim()) {
+      navigate('/stats', { state: { username: username.trim(), tagline: tagline.trim() } });
     } else {
-      alert("Please fill in both fields.");
+      alert("Please enter a valid username and tagline, in the format <username>#<tagline>.");
     }
   }
 
@@ -22,26 +23,17 @@ const LandingPage = () => {
     <div className={styles.screenContainer}>
       <div>
         <form className={styles.form} onSubmit={handleSubmit}>
-          <div>
-            <input className={styles.input}
-                  type="text"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  placeholder="Username"
-                  required
-            />
-          </div>
-          <div>
-            <input className={styles.input}
-                    type="text"
-                    value={tagline}
-                    onChange={(e) => setTagline(e.target.value)}
-                    placeholder="Tagline"
-                    required
-              />
-          </div>
+          <input
+            className={styles.input}
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder="Username #Tagline"
+            required
+          />
           <button type="submit" style={{ display: "none" }} />
         </form>
+        <div className={styles.example}>Example: SEN Tarik #1337</div>
       </div>
     </div>
   )
