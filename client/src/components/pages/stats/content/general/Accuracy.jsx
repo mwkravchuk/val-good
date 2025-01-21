@@ -6,7 +6,7 @@ import sharedStyles from "../../../../../styles/Shared.module.css";
 
 const Accuracy = ({ matches }) => {
 
-  const competitiveGames = (matches.filter((match) => match.meta.mode === "Competitive")).slice(-50).reverse();
+  const competitiveGames = (matches.filter((match) => match.meta.mode === "Competitive")).slice(0, 50).reverse();
   const chartData = competitiveGames.map((match) => {
     const { head, body, leg } = match.stats.shots;
     const total = head + body + leg
