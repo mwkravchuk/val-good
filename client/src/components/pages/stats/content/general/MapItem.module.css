@@ -1,4 +1,22 @@
 .mapItemContainer {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+.mapItemContainer > .mapName {
+  width: 100px;
+}
+
+.green {
+  color: hsl(var(--victory-color));
+}
+
+.red {
+  color: hsl(var(--defeat-color));
+}
+
+.neutral {
+  color: hsl(var(--neutral-text));
 }

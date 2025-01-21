@@ -37,7 +37,7 @@ const WinRates = ({ matches }) => {
     win,
     loss,
     draw,
-    winRate: ((win / total) * 100).toFixed(2) + "%", // Calculate win rate as a percentage
+    winRate: ((win / total) * 100).toFixed(2), // Calculate win rate as a percentage
     totalGames: total,
   }));
   
@@ -49,9 +49,11 @@ const WinRates = ({ matches }) => {
     <div className={styles.container}>
       <div className={styles.content}>
         <h2 className={sharedStyles.smallHeading}>Win Rates <span className={styles.note}>last 50 games</span></h2>
-        {sortedMaps.map((map, index) => (
-          <MapItem key={index} map={map}/>
-        ))}
+        <div className={styles.mapList}>
+          {sortedMaps.map((map, index) => (
+            <MapItem key={index} map={map}/>
+          ))}
+        </div>
       </div>
     </div>
   );

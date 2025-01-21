@@ -30,6 +30,7 @@ const AgentWR = ({ stats }) => {
       if (winRate < 45) return styles.red;
       return styles;
     };
+    
   return (
     <div className={styles.container}>
       <span className={styles.heading}>From {stats.totalGames} most recent games</span>
