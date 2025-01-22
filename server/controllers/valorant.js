@@ -61,3 +61,20 @@ exports.map = async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 };
+
+exports.content = async (req, res) => {
+  const headers = {
+    Authorization: process.env.HENRIK_API_KEY,
+  };
+
+  try {
+    const response = await axios.get(
+      "https://api.henrikdev.xyz/valorant/v1/content",
+      { headers }
+    );
+    res.json(response.data);
+  } catch (error) {
+    console.error("Error fetching content", error);
+    res.status(500).send("Internal Server Error");
+  }
+};

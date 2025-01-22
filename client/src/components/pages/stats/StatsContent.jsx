@@ -13,8 +13,9 @@ import styles from "./StatsContent.module.css";
 
 const StatsContent = ({ playerData }) => {
 
-  const { gamemodes } = GlobalData();
-  
+  const { gamemodes, content } = GlobalData();
+
+  console.log("content", content);
 
   const [matches, setMatches] = useState([]);
   const [filteredMatches, setFilteredMatches] = useState([]);

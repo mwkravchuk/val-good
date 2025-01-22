@@ -40,8 +40,6 @@ const WinRates = ({ matches }) => {
     winRate: ((win / total) * 100).toFixed(2), // Calculate win rate as a percentage
     totalGames: total,
   }));
-  
-  console.log("Win Rates with Detailed Stats by Map:", winRates);
 
   const sortedMaps = winRates.sort((a, b) => parseFloat(b.winRate) - parseFloat(a.winRate));
 

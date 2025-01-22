@@ -1,3 +1,6 @@
+import Box from '@mui/material/Box';
+import LinearProgress from '@mui/material/LinearProgress';
+
 import { useState, useEffect } from "react";
 
 import RankedTable from "./RankedTable";
@@ -41,7 +44,20 @@ const RankedHistory = ({ playerMMR, height }) => {
             <h3 className={styles.h3}>Current</h3>
             <div className={styles.currRank}>
               <img className={styles.img} src={currTierImage} alt="" />
-              <span>{currentRR} rr</span>
+              <Box sx={{ width: '100%' }}>
+                <LinearProgress
+                  variant="determinate"
+                  value={currentRR}
+                  sx={{
+                    height: 5,
+                    backgroundColor: "hsl(var(--victory-color), 25%)", // Background of the track
+                    "& .MuiLinearProgress-bar": {
+                      backgroundColor: "hsl(var(--victory-color))", // Custom color for the progress
+                    },
+                  }}
+                />
+                <span>{currentRR} rr</span>
+              </Box>
             </div>
           </div>
           <div className={styles.item}>
