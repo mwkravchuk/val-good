@@ -8,6 +8,13 @@
   width: 1080px;
 }
 
+.topBar {
+  display: flex;
+  flex-direction: row;
+  background-color: hsl(var(--background-color));
+  margin-bottom: .75em;
+}
+
 .cols {
   display: flex;
 }

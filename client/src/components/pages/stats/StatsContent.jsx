@@ -5,6 +5,7 @@ import { GlobalData } from "../../../contexts/GlobalDataProvider";
 import Skeleton from "@mui/material/Skeleton";
 
 import GamemodeSelector from "./content/GamemodeSelector";
+import ActSelector from "./content/ActSelector";
 import GeneralStats from "./content/GeneralStats";
 import Summary from "./content/Summary";
 import MatchList from "./content/MatchList";
@@ -15,13 +16,13 @@ const StatsContent = ({ playerData }) => {
 
   const { gamemodes, content } = GlobalData();
 
-  console.log("content", content);
-
   const [matches, setMatches] = useState([]);
   const [filteredMatches, setFilteredMatches] = useState([]);
+  const [actMatches, setActMatches] = useState([]);
   const [numMatches, setNumMatches] = useState(7);
   const [playerMMR, setPlayerMMR] = useState(null);
   const [selectedMode, setSelectedMode] = useState("All");
+  const [selectedAct, setSelectedAct] = useState("");
   const [loadingMatches, setLoadingMatches] = useState(true);
   const [loadingMMR, setLoadingMMR] = useState(true);
 
@@ -54,6 +55,10 @@ const StatsContent = ({ playerData }) => {
   }, [selectedMode, matches]);
 
   useEffect(() => {
+    setActMatches(matches.filter((match) => match.meta.season.id === selectedAct));
+  }, [selectedAct, matches]);
+
+  useEffect(() => {
     if (playerData) {
       const fetchMMR = async () => {
         try {
@@ -69,7 +74,7 @@ const StatsContent = ({ playerData }) => {
     }
   }, [playerData]);
  
-  const visibleMatches = filteredMatches.slice(0, numMatches);
+  const visibleMatches = actMatches.slice(0, numMatches);
 
   return (
     <div className={styles.overviewContainer}>
@@ -77,7 +82,10 @@ const StatsContent = ({ playerData }) => {
         {globalLoading ? (
           <Skeleton variant="rectangular" width="100%" height={50} style={{ marginBottom: ".75em" }} />
         ) : (
-          <GamemodeSelector gamemodes={gamemodes} selectedMode={selectedMode} onSelectMode={setSelectedMode} />
+          <div className={styles.topBar}>
+            <GamemodeSelector gamemodes={gamemodes} selectedMode={selectedMode} onSelectMode={setSelectedMode} />
+            <ActSelector acts={content.acts} selectedAct={selectedAct} onSelectAct={setSelectedAct} />
+          </div>
         )}
         <div className={styles.cols}>
           <div className={styles.leftCol}>
@@ -88,7 +96,7 @@ const StatsContent = ({ playerData }) => {
                 <Skeleton variant="rectangular" width="100%" height={367} />
               </>
             ) : (
-              <GeneralStats matches={matches} playerMMR={playerMMR}/>
+              <GeneralStats matches={visibleMatches} playerMMR={playerMMR}/>
             )}
           </div>
           <div className={styles.rightCol}>

@@ -1,17 +1,7 @@
-.modesContainer {
-  height: 50px;
-  background-color: hsl(var(--background-color));
-  margin-bottom: .75em;
-  display: flex;
-  align-items: center;
-  padding: 5px;
-}
-
 .modes {
   display: flex;
   gap: 20px;
   width: 100%;
- 
 }
 
 .modeBtn {
