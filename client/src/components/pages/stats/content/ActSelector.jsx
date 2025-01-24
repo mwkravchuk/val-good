@@ -1,21 +1,72 @@
+import { useState, useEffect } from "react";
+
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+
+
 import { processActs } from "../../../../utils/processActs";
 
-const ActSelector = ({ acts, selectedAct, onSelectAct }) => {
+const ActSelector = ({ acts, selectedActId, onSelectActId }) => {
+  
+  const processedActs = processActs(acts).reverse();
+  const activeAct = processedActs.find((act) => act.isActive);
 
-  console.log(acts);
-  const processedActs = processActs(acts);
+  // Sync local state with selectedAct prop when it changes
+  useEffect(() => {
+    if (activeAct) {
+      onSelectActId(activeAct.id);
+    }
+ }, [activeAct, onSelectActId]);
 
   const handleChange = (e) => {
-    const selectedId = e.target.value;
-    onSelectAct(selectedId);
-  };
+    const newSelectedAct = e.target.value;
+    onSelectActId(newSelectedAct); // Notify parent
+  }
 
   return (
-    <select value={selectedAct} onChange={handleChange}>
-      {processedActs.map((act) => (
-        <option key={act.id} value={act.id}>{act.name}</option>
-      ))}
-    </select>
+    <FormControl sx={{ m:1, minWidth: 200 }} size="small">
+      <InputLabel sx={{
+        color: "hsl(var(--primary-color-light))", // Default label color
+        "&.Mui-focused": {
+          color: "hsl(var(--primary-color-light))", // Prevent blue on focus
+      },
+    }}>ACT</InputLabel>
+      <Select
+        value={selectedActId}
+        label="ACT"
+        onChange={handleChange}
+        sx={{
+          borderColor: "hsl(var(--background-color-med))", // Custom border color
+          color: "hsl(var(--primary-color-light))",               // Text color
+          "& .MuiOutlinedInput-notchedOutline": {           // Styles the border
+            borderColor: "hsl(var(--background-color-med))",
+          },
+          "&:hover .MuiOutlinedInput-notchedOutline": {     // On hover
+            borderColor: "hsl(var(--primary-color))",
+          },
+          "&.Mui-focused .MuiOutlinedInput-notchedOutline": { // On focus
+            borderColor: "hsl(var(--primary-color))",
+          },
+          "& .MuiSelect-select": {                          // Styles the select text
+            color: "hsl(var(--primary-color-light))",
+          },
+        }}
+        MenuProps={{
+          PaperProps: {
+            sx: {
+              maxHeight: 200, // Adjust the height of the dropdown
+              overflow: 'auto', // Allow scrolling if there are more items than visible
+            }
+          }
+        }}
+      >
+        {processedActs.map((act) => (
+         <MenuItem key={act.id} value={act.id}>{act.name}</MenuItem>
+        ))}
+      </Select>
+    </FormControl>
   );
 };
 

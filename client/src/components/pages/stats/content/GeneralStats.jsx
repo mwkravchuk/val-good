@@ -5,13 +5,13 @@ import Accuracy from "./general/Accuracy";
 
 import styles from "./GeneralStats.module.css";
 
-const GeneralStats = ({ matches, playerMMR }) => {
+const GeneralStats = ({ allMatches, actMatches, playerMMR }) => {
   return (
     <div className={styles.container}>
       <RankedHistory playerMMR={playerMMR} />
-      <Activity matches={matches}/>
-      <WinRates matches={matches}/>
-      <Accuracy matches={matches}/>
+      <Activity matches={allMatches}/>
+      <WinRates matches={actMatches}/>
+      <Accuracy matches={actMatches}/>
     </div>
   );
 };

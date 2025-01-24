@@ -46,7 +46,7 @@ const WinRates = ({ matches }) => {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        <h2 className={sharedStyles.smallHeading}>Win Rates <span className={styles.note}>last 50 games</span></h2>
+        <h2 className={sharedStyles.smallHeading}>Win Rates <span className={styles.note}>current act</span></h2>
         <div className={styles.mapList}>
           {sortedMaps.map((map, index) => (
             <MapItem key={index} map={map}/>

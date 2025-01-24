@@ -22,7 +22,7 @@ const StatsContent = ({ playerData }) => {
   const [numMatches, setNumMatches] = useState(7);
   const [playerMMR, setPlayerMMR] = useState(null);
   const [selectedMode, setSelectedMode] = useState("All");
-  const [selectedAct, setSelectedAct] = useState("");
+  const [selectedActId, setSelectedActId] = useState("");
   const [loadingMatches, setLoadingMatches] = useState(true);
   const [loadingMMR, setLoadingMMR] = useState(true);
 
@@ -55,8 +55,8 @@ const StatsContent = ({ playerData }) => {
   }, [selectedMode, matches]);
 
   useEffect(() => {
-    setActMatches(matches.filter((match) => match.meta.season.id === selectedAct));
-  }, [selectedAct, matches]);
+    setActMatches(matches.filter((match) => match.meta.season.id === selectedActId));
+  }, [selectedActId, matches]);
 
   useEffect(() => {
     if (playerData) {
@@ -84,7 +84,7 @@ const StatsContent = ({ playerData }) => {
         ) : (
           <div className={styles.topBar}>
             <GamemodeSelector gamemodes={gamemodes} selectedMode={selectedMode} onSelectMode={setSelectedMode} />
-            <ActSelector acts={content.acts} selectedAct={selectedAct} onSelectAct={setSelectedAct} />
+            <ActSelector acts={content.acts} selectedActId={selectedActId} onSelectActId={setSelectedActId} />
           </div>
         )}
         <div className={styles.cols}>
@@ -96,7 +96,7 @@ const StatsContent = ({ playerData }) => {
                 <Skeleton variant="rectangular" width="100%" height={367} />
               </>
             ) : (
-              <GeneralStats matches={visibleMatches} playerMMR={playerMMR}/>
+              <GeneralStats allMatches={matches} actMatches={visibleMatches} playerMMR={playerMMR}/>
             )}
           </div>
           <div className={styles.rightCol}>

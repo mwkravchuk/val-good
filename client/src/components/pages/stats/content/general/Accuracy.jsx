@@ -29,7 +29,7 @@ const Accuracy = ({ matches }) => {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        <h2 className={sharedStyles.smallHeading}>Accuracy <span className={styles.note}>last 50 games</span></h2>
+        <h2 className={sharedStyles.smallHeading}>Accuracy <span className={styles.note}>current act</span></h2>
         <AccuracySummary totals={totals}/>
         <AccuracyChart data={chartData}/>
       </div>
