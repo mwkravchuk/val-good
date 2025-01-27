@@ -44,7 +44,7 @@ const RankedHistory = ({ playerMMR, height }) => {
             <h3 className={styles.h3}>Current</h3>
             <div className={styles.currRank}>
               <img className={styles.img} src={currTierImage} alt="" />
-              <Box sx={{ width: '100%' }}>
+              <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column'}}>
                 <LinearProgress
                   variant="determinate"
                   value={currentRR}
@@ -56,7 +56,7 @@ const RankedHistory = ({ playerMMR, height }) => {
                     },
                   }}
                 />
-                <span>{currentRR} rr</span>
+                <span className={styles.currentRR}>{currentRR} rr</span>
               </Box>
             </div>
           </div>

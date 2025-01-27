@@ -42,17 +42,18 @@ const MatchItem = ({ match, rankTable }) => {
       <div className={styles.left}>
         <ResultInfo result={result} mode={mode} timestamp={started_at} tier={tier} rankTable={rankTable}/>
         <AgentInfo kills={kills} deaths={deaths} assists={assists} hsp={hsp} agentId={agentId} />
+        <VerticalBar color={result === "Victory"
+          ? "hsl(var(--victory-color-shadow))"
+          : result === "Defeat"
+          ? "hsl(var(--defeat-color-shadow))"
+          : "hsl(var(--draw-color-shadow))"} margin={"8px"} height={"80%"}
+        />
+        <DetailedInfo mode={mode} kda={kda} hsp={hsp} acs={acs} damageDelta={damageDelta} damagePerRound={damagePerRound}/>
       </div>
       <div className={styles.middle}>
         <MapInfo result={result} roundsWon={roundsWon} roundsLost={roundsLost} name={map.name}/>
       </div>
       <div className={styles.right}>
-        <VerticalBar color={result === "Victory"
-              ? "hsl(var(--victory-color-shadow))"
-              : result === "Defeat"
-              ? "hsl(var(--defeat-color-shadow))"
-              : "hsl(var(--draw-color-shadow))"} margin={"8px"} height={"80%"}/>
-        <DetailedInfo mode={mode} kda={kda} hsp={hsp} acs={acs} damageDelta={damageDelta} damagePerRound={damagePerRound}/>
       </div>
     </li>
   );

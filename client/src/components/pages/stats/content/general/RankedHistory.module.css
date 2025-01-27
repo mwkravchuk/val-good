@@ -46,3 +46,8 @@
 .h3 {
   text-align: center;
 }
+
+.currentRR {
+  color: hsl(var(--victory-color));
+  text-align: center;
+}

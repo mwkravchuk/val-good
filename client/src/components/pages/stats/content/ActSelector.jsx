@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -13,12 +13,13 @@ const ActSelector = ({ acts, selectedActId, onSelectActId }) => {
   const processedActs = processActs(acts).reverse();
   const activeAct = processedActs.find((act) => act.isActive);
 
-  // Sync local state with selectedAct prop when it changes
+  const isFirstRun = useRef(true);
   useEffect(() => {
-    if (activeAct) {
-      onSelectActId(activeAct.id);
+    if (isFirstRun.current && activeAct) {
+      onSelectActId(activeAct.id); // Set default act only on first render
+      isFirstRun.current = false; // Mark as not the first run anymore
     }
- }, [activeAct, onSelectActId]);
+  }, [activeAct, onSelectActId]);
 
   const handleChange = (e) => {
     const newSelectedAct = e.target.value;
@@ -28,9 +29,9 @@ const ActSelector = ({ acts, selectedActId, onSelectActId }) => {
   return (
     <FormControl sx={{ m:1, minWidth: 200 }} size="small">
       <InputLabel sx={{
-        color: "hsl(var(--primary-color-light))", // Default label color
+        color: "hsl(var(--background-color-dark))", // Default label color
         "&.Mui-focused": {
-          color: "hsl(var(--primary-color-light))", // Prevent blue on focus
+          color: "hsl(var(--primary-color))", // Prevent blue on focus
       },
     }}>ACT</InputLabel>
       <Select
@@ -50,7 +51,7 @@ const ActSelector = ({ acts, selectedActId, onSelectActId }) => {
             borderColor: "hsl(var(--primary-color))",
           },
           "& .MuiSelect-select": {                          // Styles the select text
-            color: "hsl(var(--primary-color-light))",
+            color: "hsl(var(--primary-color))",
           },
         }}
         MenuProps={{

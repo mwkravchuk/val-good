@@ -9,6 +9,10 @@
   width: 100px;
 }
 
+.winRate {
+  min-width: 5em;
+}
+
 .green {
   color: hsl(var(--victory-color));
 }

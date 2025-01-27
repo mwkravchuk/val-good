@@ -28,6 +28,21 @@ const StatsContent = ({ playerData }) => {
 
   const globalLoading = loadingMatches || loadingMMR;
 
+  useEffect(() => {
+    if (playerData) {
+      const fetchMMR = async () => {
+        try {
+          const mmrResponse = await axios.get(`/player/mmr/${playerData.puuid}`);
+          setPlayerMMR(mmrResponse.data.data);
+        } catch (error) {
+          console.error("Error fetching player MMR", error);
+        } finally {
+          setLoadingMMR(false);
+        }
+      };
+      fetchMMR();
+    }
+  }, [playerData]);
 
   useEffect(() => {
     if (playerData) {
@@ -47,34 +62,18 @@ const StatsContent = ({ playerData }) => {
   }, [playerData]);
 
   useEffect(() => {
-    if (selectedMode == "All") {
-      setFilteredMatches(matches);
-    } else {
-      setFilteredMatches(matches.filter((match) => match.meta.mode === selectedMode));
-    }
-  }, [selectedMode, matches]);
-
-  useEffect(() => {
-    setActMatches(matches.filter((match) => match.meta.season.id === selectedActId));
+    setActMatches(matches.filter((match) => match.meta.season.id == selectedActId));
   }, [selectedActId, matches]);
 
   useEffect(() => {
-    if (playerData) {
-      const fetchMMR = async () => {
-        try {
-          const mmrResponse = await axios.get(`/player/mmr/${playerData.puuid}`);
-          setPlayerMMR(mmrResponse.data.data);
-        } catch (error) {
-          console.error("Error fetching player MMR", error);
-        } finally {
-          setLoadingMMR(false);
-        }
-      };
-      fetchMMR();
+    if (selectedMode == "All") {
+      setFilteredMatches(actMatches);
+    } else {
+      setFilteredMatches(actMatches.filter((match) => match.meta.mode === selectedMode));
     }
-  }, [playerData]);
+  }, [selectedMode, actMatches]);
  
-  const visibleMatches = actMatches.slice(0, numMatches);
+  const visibleMatches = filteredMatches.slice(0, numMatches);
 
   return (
     <div className={styles.overviewContainer}>
@@ -96,7 +95,7 @@ const StatsContent = ({ playerData }) => {
                 <Skeleton variant="rectangular" width="100%" height={367} />
               </>
             ) : (
-              <GeneralStats allMatches={matches} actMatches={visibleMatches} playerMMR={playerMMR}/>
+              <GeneralStats allMatches={matches} actMatches={actMatches} playerMMR={playerMMR}/>
             )}
           </div>
           <div className={styles.rightCol}>

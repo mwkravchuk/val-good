@@ -11,7 +11,7 @@ const MapItem = ({ map }) => {
   return (
     <div className={styles.mapItemContainer}>
       <span className={styles.mapName}>{map.map}</span>
-      <span className={getWinRateClass(map.winRate)}>{map.winRate}%</span>
+      <span className={`${styles.winRate} ${getWinRateClass(map.winRate)}`}>{map.winRate}%</span>
       <span>{map.win} / {map.loss} / {map.draw}</span>
     </div>
   );
