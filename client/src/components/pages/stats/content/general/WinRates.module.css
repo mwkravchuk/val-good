@@ -3,10 +3,6 @@
   flex-direction: column;
 }
 
-.mapList {
-  margin-top: 10px;
-}
-
 .note {
   color: hsl(var(--neutral-text));
   font-weight: 500;

@@ -6,7 +6,7 @@ import VerticalBar from "../../../../common/VerticalBar";
 
 import styles from "./MatchItem.module.css";
 
-const MatchItem = ({ match, rankTable }) => {
+const MatchItem = ({ match, rankTable, maps }) => {
 
   const { meta, teams, stats } = match; // Destructure match
   const { map, mode, started_at } = meta; // Destructure meta
@@ -23,6 +23,10 @@ const MatchItem = ({ match, rankTable }) => {
   const roundsWon = team === 'Blue' ? blueRounds : redRounds;
   const roundsLost = team === 'Blue' ? redRounds : blueRounds;
 
+  const mapFromApi = maps.find((mapInApi) => mapInApi.uuid === map.id);;
+  const mapBackground = mapFromApi?.listViewIcon;
+
+
   const getResult = () => {
     const selfTeam = team;
     if (mode === "Deathmatch") {
@@ -34,6 +38,10 @@ const MatchItem = ({ match, rankTable }) => {
     const winningTeam = blueRounds > redRounds ? "Blue" : "Red";
     return selfTeam === winningTeam ? "Victory" : "Defeat";
   }
+
+
+
+
 
   const result = getResult();
 
@@ -53,7 +61,16 @@ const MatchItem = ({ match, rankTable }) => {
       <div className={styles.middle}>
         <MapInfo result={result} roundsWon={roundsWon} roundsLost={roundsLost} name={map.name}/>
       </div>
-      <div className={styles.right}>
+      <div className={styles.right} style={{
+        backgroundImage: `url(${mapBackground})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        maskImage: "linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))",
+        WebkitMaskImage: "linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))",
+        backgroundBlendMode: "multiply",
+        backgroundColor: "rgba(0, 0, 0, 0.5)" // Optional overlay for better contrast
+      }}>
       </div>
     </li>
   );

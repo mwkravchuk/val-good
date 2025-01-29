@@ -1,7 +1,7 @@
 .resultInfo {
   display: flex;
   flex-direction: column;
-  width: 108px;
+  flex: 0 0 100px;
   height: 100%;
   margin: 6px 0 6px 10px;
 }

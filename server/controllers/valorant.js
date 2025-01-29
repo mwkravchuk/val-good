@@ -48,6 +48,16 @@ exports.gamemodes = async (req, res) => {
   }
 };
 
+exports.maps = async (req, res) => {
+  try {
+    const response = await axios.get(`https://valorant-api.com/v1/maps/`);
+    res.json(response.data);
+  } catch (error) {
+    console.error("Error fetching maps", error);
+    res.status(500).send("Internal Server Error");
+  }
+};
+
 exports.map = async (req, res) => {
   const { mapId } = req.params;
 

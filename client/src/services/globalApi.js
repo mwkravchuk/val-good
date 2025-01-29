@@ -30,6 +30,11 @@ export const fetchGamemodes = async () => {
   return ["All", ...playableGamemodes];
 };
 
+export const fetchMaps = async () => {
+  const response = await axios.get("/valorant/maps");
+  return response.data.data;
+};
+
 export const fetchContent = async () => {
   const response = await axios.get(`/valorant/content/`);
   return response.data;

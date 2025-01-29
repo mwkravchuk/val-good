@@ -6,9 +6,20 @@
 }
 
 .matchContainer > * {
-  display: flex;
-  flex: 1;
   font-size: .8em;
+}
+
+.left, .right {
+  flex: 35%;
+}
+
+.left {
+  display: flex;
+  flex-direction: row;
+}
+
+.middle {
+  flex: 30%;
 }
 
 .matchVictory {
@@ -27,7 +38,6 @@
 }
 
 .right {
-  align-items: center;
-  justify-content: center;
+  background-color: hsl(var(--primary-color), 20%);
 }
 

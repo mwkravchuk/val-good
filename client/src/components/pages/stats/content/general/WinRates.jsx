@@ -1,14 +1,19 @@
 import MapItem from "./MapItem";
 
+import { GlobalData } from "../../../../../contexts/GlobalDataProvider";
+
 import styles from "./WinRates.module.css";
 import sharedStyles from "../../../../../styles/Shared.module.css";
 
 const WinRates = ({ matches }) => {
 
+  const { maps } = GlobalData();
+
   const competitiveGames = (matches.filter((match) => match.meta.mode === "Competitive")).slice(0, 50);
   const mapResults = {}
   competitiveGames.forEach((game) => {
     const mapName = game.meta.map.name;
+    const mapId = game.meta.map.id;
     const userTeam = game.stats.team.toLowerCase();
     const { red, blue } = game.teams;
 
@@ -25,15 +30,16 @@ const WinRates = ({ matches }) => {
     }
 
     if (!mapResults[mapName]) {
-      mapResults[mapName] = { win: 0, loss: 0, draw: 0, total: 0}
+      mapResults[mapName] = { mapId, win: 0, loss: 0, draw: 0, total: 0}
     }
 
     mapResults[mapName][result] += 1
     mapResults[mapName].total += 1
   });
 
-  const winRates = Object.entries(mapResults).map(([map, { win, loss, draw, total }]) => ({
+  const winRates = Object.entries(mapResults).map(([map, { mapId, win, loss, draw, total }]) => ({
     map,
+    mapId,
     win,
     loss,
     draw,
@@ -49,7 +55,7 @@ const WinRates = ({ matches }) => {
         <h2 className={sharedStyles.smallHeading}>Win Rates <span className={styles.note}>current act</span></h2>
         <div className={styles.mapList}>
           {sortedMaps.map((map, index) => (
-            <MapItem key={index} map={map}/>
+            <MapItem key={index} map={map} maps={maps}/>
           ))}
         </div>
       </div>

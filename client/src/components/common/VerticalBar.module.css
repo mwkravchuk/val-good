@@ -1,4 +1,4 @@
 .verticalBar {
-  width: 1px;
+  flex: 0 0 1px;
   height: 80%;
 }
