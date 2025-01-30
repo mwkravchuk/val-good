@@ -12,6 +12,7 @@ const Header = () => {
           <Logo />
         </Link>
       </div>
+      <button>Login With Google</button>
     </header>
   );
 };

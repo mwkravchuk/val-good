@@ -1,6 +1,7 @@
 header {
   min-height: 200px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: hsl(var(--background-color));
