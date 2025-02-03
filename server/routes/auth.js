@@ -12,7 +12,10 @@ router.get(
 router.get(
   "/google/callback",
   passport.authenticate("google", { failureRedirect: "/login" }),
-  authController.googleAuthSuccess
+  (req, res) => {
+    // User is authenticated. Redirect.
+    res.redirect("http://localhost:5173/");
+  }
 );
 
 router.get("/logout", authController.logout);
