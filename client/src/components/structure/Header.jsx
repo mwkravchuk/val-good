@@ -6,8 +6,9 @@ import styles from "./Header.module.css";
 
 const Header = () => {
 
-  const handleLogin = () => {
-    window.location.href = "http://localhost:4000/api/auth/google";
+  const handleLogin = (e) => {
+    e.preventDefault();
+    window.open("http://localhost:4000/api/auth/google", "_self");
   };
 
   return (
