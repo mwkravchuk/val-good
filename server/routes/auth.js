@@ -1,7 +1,9 @@
 const express = require("express");
 const passport = require("passport");
+const jwt = require("jsonwebtoken");
 const router = express.Router();
 
+const authenticateUser = require("../middleware/authenticateUser");
 const authController = require("../controllers/auth");
 
 router.get(
@@ -19,24 +21,26 @@ router.get(
     session: false,
   }),
   (req, res) => {
-    const { user } = req.user;
+    const user = req.user;
 
-    const token = jwt.sign({ userId: user.id }, JWT_SECRET, {
-      expiresIn: JWT_EXPIRE,
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
+      expiresIn: "1h",
     });
 
     // Set the token in the HTTP-only cookie
     res.cookie("token", token, {
       httpOnly: true, // The cookie cannot be accessed by JavaScript
-      secure: process.env.NODE_ENV === "production", // Use 'secure' flag in production for HTTPS
+      secure: true,
       sameSite: "Strict", // CSRF protection
       maxAge: 60 * 60 * 1000, // 1 hour expiration
     });
 
-    res.redirect("http://localhost:5173");
+    res.redirect("http://localhost:5173/stats");
   }
 );
 
-router.get("/logou/failed", authController.logout);
+router.get("/user", authenticateUser, authController.user);
+
+router.get("/logout/failed", authController.logout);
 
 module.exports = router;

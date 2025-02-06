@@ -2,6 +2,7 @@ require("dotenv").config();
 require("./config/passport");
 const express = require("express");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 const app = express();
 
 // Routers
@@ -11,6 +12,7 @@ const valorantRouter = require("./routes/valorant");
 
 // Middleware
 app.use(cors());
+app.use(cookieParser());
 
 // Set up mongoose connection
 const mongoose = require("mongoose");
