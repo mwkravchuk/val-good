@@ -29,21 +29,24 @@ const Header = () => {
 
   console.log("user:", user);
 
-
-
   return (
     <header className={styles.header}>
-      <div className={styles.logoWrapper}>
-        <Link to="/">
-          <Logo />
-        </Link>
+      <div className={styles.left}></div>
+      <div className={styles.middle}>
+        <div className={styles.logoWrapper}>
+          <Link to="/">
+            <Logo />
+          </Link>
+        </div>
       </div>
-      <div>
-        { user ? (
-          <span>i am a user</span>
-        ) : (
-          <button onClick={handleLogin}>Login With Google</button>
-        )}
+      <div className={styles.right}>
+        <div>
+          { user ? (
+            <img src={user.displayIcon} alt="" />
+          ) : (
+            <button onClick={handleLogin}>Login With Google</button>
+          )}
+        </div>
       </div>
     </header>
   );

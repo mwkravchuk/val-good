@@ -11,8 +11,15 @@ const playerRouter = require("./routes/player");
 const valorantRouter = require("./routes/valorant");
 
 // Middleware
-app.use(cors());
 app.use(cookieParser());
+app.use(
+  cors({
+    origin: "http://localhost:5173", // frontend URL
+    credentials: true, // Allow cookies and authentication headers
+  })
+);
+app.use(express.json()); // So express can handle json
+app.use(express.urlencoded({ extended: true })); // url-encoded data
 
 // Set up mongoose connection
 const mongoose = require("mongoose");

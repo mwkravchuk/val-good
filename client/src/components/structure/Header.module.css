@@ -1,8 +1,16 @@
 header {
   min-height: 200px;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: hsl(var(--background-color));
+}
+
+header > * {
+  flex: 1;
+}
+
+.middle {
+  display: flex;
+  justify-content: center;
 }

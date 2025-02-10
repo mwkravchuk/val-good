@@ -22,7 +22,6 @@ router.get(
   }),
   (req, res) => {
     const user = req.user;
-
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
       expiresIn: "1h",
     });
@@ -30,12 +29,12 @@ router.get(
     // Set the token in the HTTP-only cookie
     res.cookie("token", token, {
       httpOnly: true, // The cookie cannot be accessed by JavaScript
-      secure: true,
-      sameSite: "Strict", // CSRF protection
+      //secure: true,
+      sameSite: "Lax",
       maxAge: 60 * 60 * 1000, // 1 hour expiration
     });
 
-    res.redirect("http://localhost:5173/stats");
+    res.redirect("http://localhost:5173/");
   }
 );
 
