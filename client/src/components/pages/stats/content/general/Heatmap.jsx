@@ -7,7 +7,7 @@ const Heatmap = ({ matches }) => {
   const [monthOffset, setMonthOffset] = useState(0);
 
   // Map: Date -> Num Matches Played
-  const matchCounts = matches.reduce((acc, match) => {
+  const matchCounts = (matches ?? []).reduce((acc, match) => {
     const date = new Date(match.meta.started_at).toLocaleDateString("en-CA");
     acc[date] = (acc[date] || 0) + 1;
     return acc;

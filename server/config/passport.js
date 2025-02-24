@@ -20,6 +20,14 @@ passport.use(
             displayName: profile.displayName,
             displayIcon: profile.photos?.[0]?.value || null,
           });
+
+          // Insert their stored-matches into the database for them
+          const matches = await fetchGeneralMatches(user.puuid);
+          if (matches.length > 0) {
+            user.matches = matches;
+          }
+
+          await user.save();
         }
 
         return done(null, user);

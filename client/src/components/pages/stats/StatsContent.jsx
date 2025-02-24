@@ -45,12 +45,12 @@ const StatsContent = ({ playerData }) => {
   }, [playerData]);
 
   useEffect(() => {
-    if (playerData) {
+    if (playerData?.puuid) {
       const fetchMatches = async () => {
         try {
-          const matchesResponse = await axios.get(`/player/stored-matches/${playerData.puuid}`);
-          console.log("Matches: ", matchesResponse.data.data);
-          setMatches(matchesResponse.data.data);
+          const matchesResponse = await axios.get(`/player/matches/${playerData.puuid}`);
+          console.log("Matches: ", matchesResponse.data.matches.data);
+          setMatches(matchesResponse.data.matches.data);
         } catch (error) {
             console.error("Error fetching matches", error);
         } finally {
@@ -62,7 +62,11 @@ const StatsContent = ({ playerData }) => {
   }, [playerData]);
 
   useEffect(() => {
-    setActMatches(matches.filter((match) => match.meta.season.id == selectedActId));
+    if (matches) {
+      setActMatches(matches.filter((match) => match.meta.season.id == selectedActId));
+    } else {
+      setActMatches([]); // Ensure state is always set, even if matches is undefined
+    }
   }, [selectedActId, matches]);
 
   useEffect(() => {

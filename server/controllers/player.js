@@ -1,3 +1,4 @@
+const fetchGeneralMatches = require("../utils/fetchGeneralMatches");
 const axios = require("axios");
 
 exports.puuid = async (req, res) => {
@@ -20,37 +21,17 @@ exports.puuid = async (req, res) => {
 
 exports.matches = async (req, res) => {
   const { puuid } = req.params;
-  const headers = {
-    Authorization: process.env.HENRIK_API_KEY,
-  };
 
   try {
-    const response = await axios.get(
-      `https://api.henrikdev.xyz/valorant/v4/by-puuid/matches/na/pc/${puuid}`,
-      { headers }
-    );
-    res.json(response.data);
+    if (req.user) {
+      return res.json({ matches: req.user.matches || [] });
+    } else {
+      const generalMatches = await fetchGeneralMatches(puuid);
+      return res.json({ matches: generalMatches });
+    }
   } catch (error) {
     console.error("Error fetching matches", error);
-    res.status(500).send("Internal Server Error");
-  }
-};
-
-exports.storedMatches = async (req, res) => {
-  const { puuid } = req.params;
-  const headers = {
-    Authorization: process.env.HENRIK_API_KEY,
-  };
-
-  try {
-    const response = await axios.get(
-      `https://api.henrikdev.xyz/valorant/v1/by-puuid/stored-matches/na/${puuid}`,
-      { headers }
-    );
-    res.json(response.data);
-  } catch (error) {
-    console.error("Error fetching matches", error);
-    res.status(500).send("Internal Server Error");
+    res.status(500).json({ error: "Server error" });
   }
 };
 
