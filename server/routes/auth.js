@@ -34,7 +34,7 @@ router.get(
       maxAge: 60 * 60 * 1000, // 1 hour expiration
     });
 
-    res.redirect("http://localhost:5173/");
+    res.redirect("http://localhost:5173/redirect");
   }
 );
 

@@ -2,6 +2,8 @@ const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const User = require("../models/user");
 
+const fetchGeneralMatches = require("../utils/fetchGeneralMatches");
+
 passport.use(
   new GoogleStrategy(
     {
@@ -20,12 +22,6 @@ passport.use(
             displayName: profile.displayName,
             displayIcon: profile.photos?.[0]?.value || null,
           });
-
-          // Insert their stored-matches into the database for them
-          const matches = await fetchGeneralMatches(user.puuid);
-          if (matches.length > 0) {
-            user.matches = matches;
-          }
 
           await user.save();
         }

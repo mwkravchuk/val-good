@@ -7,6 +7,7 @@ const UserSchema = new Schema({
   email: { type: String, required: true },
   displayName: { type: String, required: true },
   displayIcon: { type: String },
+  puuid: { type: String, default: null },
   matches: { type: Array, default: [] },
 });
 
