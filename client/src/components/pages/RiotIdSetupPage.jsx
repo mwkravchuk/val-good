@@ -21,7 +21,7 @@ const RiotIdSetupPage = () => {
       setLoading(true);
       setError("");
 
-      const response = await axios.post("/user/setup-riot-id", { username, tagline }, { widthCredentials: true });
+      const response = await axios.post("/user/setup-riot-id", { username, tagline }, { withCredentials: true });
       console.log("Setup success:", response.data);
       navigate("/stats");
 

@@ -6,6 +6,7 @@ const cookieParser = require("cookie-parser");
 const app = express();
 
 // Routers
+const userRouter = require("./routes/user");
 const authRouter = require("./routes/auth");
 const playerRouter = require("./routes/player");
 const valorantRouter = require("./routes/valorant");
@@ -31,6 +32,7 @@ async function main() {
   await mongoose.connect(mongoDB);
 }
 
+app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/player", playerRouter);
 app.use("/api/valorant", valorantRouter);

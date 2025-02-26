@@ -10,11 +10,11 @@ const RedirectPage = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await axios.get("user/current-user", {
+        const response = await axios.get("/user/current-user", {
           withCredentials: true,
         });
         const user = response.data;
-        navigate(user.puuid ? "/stats" : "/setup-riot-id");
+        navigate(user.matches.length > 0 ? "/stats" : "/setup-riot-id");
       } catch (error) {
         console.error("Error fetching user", error);
         navigate("/");
@@ -27,7 +27,7 @@ const RedirectPage = () => {
   });
 
   return (
-    <div>Loading...</div>
+    <div>Redirecting... {loading}</div>
   );
 };
 

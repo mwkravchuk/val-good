@@ -24,7 +24,14 @@ exports.matches = async (req, res) => {
 
   try {
     if (req.user) {
-      return res.json({ matches: req.user.matches || [] });
+      if (req.user.matches.length > 0) {
+        return res.json({ matches: req.user.matches });
+      }
+
+      const matches = await fetchGeneralMatches(puuid);
+      req.user.matches = matches;
+      await req.user.save();
+      return res.json({ matches });
     } else {
       const generalMatches = await fetchGeneralMatches(puuid);
       return res.json({ matches: generalMatches });
