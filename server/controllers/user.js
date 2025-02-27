@@ -15,10 +15,14 @@ exports.currentUser = async (req, res) => {
 };
 
 exports.setupRiotId = async (req, res) => {
+  console.log("setupRiotId called with:", req.body);
+
   try {
     if (!req.user) {
       return res.status(401).json({ message: "Not authenticated" });
     }
+
+    console.log("setting up riot Id.");
 
     const { username, tagline } = req.body;
     if (!username || !tagline) {
@@ -34,13 +38,17 @@ exports.setupRiotId = async (req, res) => {
       }
     );
 
-    const puuid = puuidResponse.data.puuid;
+    const puuid = puuidResponse.data.data.puuid;
     if (!puuid) return res.status(404).json({ message: "PUUID not found" });
 
     const matchesResponse = await axios.get(
       `${process.env.API_BASE_URL}/player/matches/${puuid}`
     );
-    const matches = matchesResponse.data.matches;
+    const matches = matchesResponse.data.matches.data;
+    console.log(
+      "matches response.data.matches.data: ",
+      matchesResponse.data.matches.data
+    );
 
     req.user.puuid = puuid;
     req.user.matches = matches;

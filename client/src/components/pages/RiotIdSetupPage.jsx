@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "../../../axiosConfig";
+import axios from 'axios';
 
 const RiotIdSetupPage = () => {
 
@@ -21,7 +21,7 @@ const RiotIdSetupPage = () => {
       setLoading(true);
       setError("");
 
-      const response = await axios.post("/user/setup-riot-id", { username, tagline }, { withCredentials: true });
+      const response = await axios.post("http://localhost:4000/api/user/setupRiotId", { username, tagline }, { withCredentials: true });
       console.log("Setup success:", response.data);
       navigate("/stats");
 
