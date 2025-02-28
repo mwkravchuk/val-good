@@ -6,6 +6,8 @@ exports.currentUser = async (req, res) => {
       return res.status(401).json({ message: "Not authenticated" });
     }
     res.json({
+      username: req.user.username,
+      tagline: req.user.tagline,
       matches: req.user.matches || [],
     });
   } catch (error) {
@@ -50,6 +52,8 @@ exports.setupRiotId = async (req, res) => {
       matchesResponse.data.matches.data
     );
 
+    req.user.username = username;
+    req.user.tagline = tagline;
     req.user.puuid = puuid;
     req.user.matches = matches;
     await req.user.save();

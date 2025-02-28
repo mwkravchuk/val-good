@@ -38,6 +38,7 @@ const StatsHead = ({ playerInfo, playerData }) => {
 
   useEffect(() => {
     if (playerData) {
+      console.log("playerdata:", playerData);
       const fetchCardArt = async () => {
         try {
           const cardArtResponse = await axios.get(`/player/card/${playerData.card}`);

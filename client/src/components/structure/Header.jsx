@@ -14,6 +14,7 @@ const Header = () => {
     const fetchUser = async () => {
       try {
         const { data } = await axios.get("/auth/user", { withCredentials: true });
+        console.log("data header", data.user);
         setUser(data.user);
       } catch (error) {
         console.log("Error fetching user", error);
@@ -26,8 +27,6 @@ const Header = () => {
     e.preventDefault();
     window.open("http://localhost:4000/api/auth/google", "_self");
   };
-
-  console.log("user:", user);
 
   return (
     <header className={styles.header}>
@@ -42,7 +41,7 @@ const Header = () => {
       <div className={styles.right}>
         <div>
           { user ? (
-            <img src={user.displayIcon} alt="" />
+            <img src={user.displayIcon} style={{ height: 20, width: 20}}alt="" />
           ) : (
             <button onClick={handleLogin}>Login With Google</button>
           )}
