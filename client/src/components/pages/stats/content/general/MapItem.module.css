@@ -1,8 +1,22 @@
 .mapItemContainer {
   display: flex;
-  justify-content: center;
-  gap: 20px;
-  padding: 10px 0;
+  justify-content: space-evenly;
+  padding: 15px 0;
+  margin-bottom: 1px;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(113, 102, 115, 0.5);
+  z-index: 1;
+}
+
+.mapName, .winRate, span {
+  z-index: 2;
 }
 
 .mapItemContainer > .mapName {
@@ -11,6 +25,7 @@
 
 .winRate {
   min-width: 5em;
+  font-weight: 600;
 }
 
 .green {

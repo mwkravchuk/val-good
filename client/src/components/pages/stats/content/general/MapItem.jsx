@@ -7,18 +7,15 @@ const MapItem = ({ map, maps }) => {
     if (winRate < 45) return styles.red;
     return styles;
   };
-
-  console.log("maps", maps);
-  console.log("map:", map);
   
-
-
   const mapFromApi = maps.find((mapInApi) => mapInApi.uuid === map.mapId);
   console.log("map from api: ", mapFromApi);
   const mapBackground = mapFromApi?.premierBackgroundImage;
 
   return (
-    <div className={styles.mapItemContainer}>
+    <div className={styles.mapItemContainer}
+         style={{ backgroundImage: `url(${mapBackground})`, backgroundSize: 'cover', backgroundPosition: 'center', position: 'relative' }}>
+      <div className={styles.overlay}></div>
       <span className={styles.mapName}>{map.map}</span>
       <span className={`${styles.winRate} ${getWinRateClass(map.winRate)}`}>{map.winRate}%</span>
       <span>{map.win} / {map.loss} / {map.draw}</span>

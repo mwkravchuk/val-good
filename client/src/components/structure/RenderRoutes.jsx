@@ -1,9 +1,11 @@
 import { Route, Routes } from "react-router-dom";
 import routes from "./routes";
 
+import styles from "./RenderRoutes.module.css";
+
 const RenderRoutes = () => {
   return (
-    <div>
+    <div className={styles.routesPage}>
       <Routes>
         {routes.map((route, i) => {
           return <Route key={i} path={route.path} element={route.element}/>

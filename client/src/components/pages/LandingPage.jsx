@@ -6,7 +6,7 @@ import styles from "./LandingPage.module.css";
 const LandingPage = () => {
   
   const navigate = useNavigate();
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState("SEN Tarik #1337");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,7 +21,6 @@ const LandingPage = () => {
 
   return (
     <div className={styles.screenContainer}>
-      <div>
         <form className={styles.form} onSubmit={handleSubmit}>
           <input
             className={styles.input}
@@ -33,8 +32,6 @@ const LandingPage = () => {
           />
           <button type="submit" style={{ display: "none" }} />
         </form>
-        <div className={styles.example}>Example: SEN Tarik #1337</div>
-      </div>
     </div>
   )
 };

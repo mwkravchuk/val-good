@@ -23,19 +23,8 @@ exports.matches = async (req, res) => {
   const { puuid } = req.params;
 
   try {
-    if (req.user) {
-      if (req.user.matches.length > 0) {
-        return res.json({ matches: req.user.matches });
-      }
-
-      const matches = await fetchGeneralMatches(puuid);
-      req.user.matches = matches;
-      await req.user.save();
-      return res.json({ matches });
-    } else {
-      const generalMatches = await fetchGeneralMatches(puuid);
-      return res.json({ matches: generalMatches });
-    }
+    const matches = await fetchGeneralMatches(puuid);
+    return res.json({ matches });
   } catch (error) {
     console.error("Error fetching matches", error);
     res.status(500).json({ error: "Server error" });

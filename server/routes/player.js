@@ -1,12 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const authenticateUser = require("../middleware/authenticateUser");
+//const authenticateUser = require("../middleware/authenticateUser");
 
 const playerController = require("../controllers/player");
 
 router.get("/puuid", playerController.puuid);
 
-router.get("/matches/:puuid", authenticateUser, playerController.matches);
+router.get("/matches/:puuid", playerController.matches);
 
 router.get("/mmr/:puuid", playerController.mmr);
 

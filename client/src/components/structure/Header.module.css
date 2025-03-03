@@ -5,12 +5,3 @@ header {
   align-items: center;
   background-color: hsl(var(--background-color));
 }
-
-header > * {
-  flex: 1;
-}
-
-.middle {
-  display: flex;
-  justify-content: center;
-}
