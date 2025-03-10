@@ -21,6 +21,7 @@ const LandingPage = () => {
 
   return (
     <div className={styles.screenContainer}>
+        <div className={styles.overlay}></div>
         <form className={styles.form} onSubmit={handleSubmit}>
           <input
             className={styles.input}

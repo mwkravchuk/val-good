@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useUser } from "../../contexts/UserProvider";
+//import { useUser } from "../../contexts/UserProvider";
 import axios from "../../../axiosConfig";
 
 import StatsHead from "./stats/StatsHead";
@@ -10,20 +10,15 @@ const StatsPage = () => {
 
   const location = useLocation();
   const { username: generalUsername, tagline: generalTagline } = location.state || {};
-  const { user, loading } = useUser();
+  //const { user, loading } = useUser();
   const [playerData, setPlayerData] = useState(null);
 
   useEffect(() => {
-    console.log("user from context", user);
-    console.log("loading status", loading);
-  }, [user, loading])
+    //if (loading) return;
+    const usernameToFetch = generalUsername;
+    const taglineToFetch = generalTagline;
 
-  useEffect(() => {
-    if (loading) return;
-    const usernameToFetch = generalUsername || user?.username;
-    const taglineToFetch = generalTagline || user?.tagline;
-
-    console.log("usernametofetch: ", usernameToFetch);
+    //console.log("usernametofetch: ", usernameToFetch);
 
     if (usernameToFetch && taglineToFetch) {
       const fetchPlayerData = async () => {
@@ -38,15 +33,15 @@ const StatsPage = () => {
       fetchPlayerData();
     }
 
-  }, [user, loading, generalUsername, generalTagline]);
+  }, [generalUsername, generalTagline]);
 
-  if (loading) return <p>loading...</p>;
-  if (!user && !generalUsername) return <p>please log in or enter riot id</p>
+  //if (loading) return <p>loading...</p>;
+  //if (!user && !generalUsername) return <p>please log in or enter riot id</p>
 
   return (
     <section>
-      <StatsHead playerInfo={[generalUsername || user?.username, generalTagline || user?.tagline]} playerData={playerData}/>
-      <StatsContent playerInfo={[generalUsername || user?.username, generalTagline || user?.tagline]} playerData={playerData}/>
+      <StatsHead playerInfo={[generalUsername, generalTagline]} playerData={playerData}/>
+      <StatsContent playerInfo={[generalUsername, generalTagline]} playerData={playerData}/>
     </section>
   );
 }
