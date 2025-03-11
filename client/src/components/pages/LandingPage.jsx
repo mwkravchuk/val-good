@@ -6,7 +6,7 @@ import styles from "./LandingPage.module.css";
 const LandingPage = () => {
   
   const navigate = useNavigate();
-  const [input, setInput] = useState("SEN Tarik #1337");
+  const [input, setInput] = useState("SEN nightz #aim");
 
   const handleSubmit = async (e) => {
     e.preventDefault();

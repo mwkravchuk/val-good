@@ -5,7 +5,7 @@
 }
 
 .overview {
-  width: 1080px;
+  max-width: 1080px;
 }
 
 .topBar {
@@ -17,6 +17,12 @@
 
 .cols {
   display: flex;
+  flex-direction: row;
+}
+
+.skeletons {
+  display: flex;
+  flex-direction: row;
 }
 
 .leftCol > *, .rightCol > * {
@@ -48,5 +54,25 @@
 .btn:hover {
   cursor: pointer;
   background-color: hsla(var(--primary-color), 50%);
+}
+
+@media (max-width: 1080px) {
+  .overview {
+    width: 90vw;
+  }
+}
+
+@media(max-width: 873px) {
+  .cols {
+    flex-direction: column;
+  }
+
+  .leftCol {
+    margin-right: 0;
+  }
+
+  .topBar {
+    flex-direction: column;
+  }
 }
 

@@ -44,7 +44,7 @@
 
 .input {
   border-radius: 30px;
-  color: hsl(var(--text-color));
+  color: hsl(var(--primary-color-light));
   min-width: 200px;
   width: 100%;
   padding: 20px 50px;
@@ -56,12 +56,12 @@
 }
 
 .input::placeholder {
-  color: hsl(var(--text-color));
+  color: hsl(var(--background-color-dark));
 }
 
 .input:focus {
   outline: none;
-  border-color: hsl(var(--primary-color));
+  border-color: hsl(var(--primary-color-light));
 }
 
 .example {

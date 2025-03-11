@@ -6,6 +6,12 @@
   gap: 40px;
 }
 
+@media(max-width: 1080px) {
+  .container {
+    gap: 5px;
+  }
+}
+
 .container > div {
   height: 100%;
 }

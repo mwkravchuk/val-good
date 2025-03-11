@@ -93,11 +93,12 @@ const StatsContent = ({ playerData }) => {
         <div className={styles.cols}>
           <div className={styles.leftCol}>
             {globalLoading ? (
-              <>
+              <div className={styles.skeletons}>
                 <Skeleton variant="rectangular" width="100%" height={336} />
                 <Skeleton variant="rectangular" width="100%" height={260} />
                 <Skeleton variant="rectangular" width="100%" height={367} />
-              </>
+                <Skeleton variant="rectangular" width="100%" height={367} />
+              </div>
             ) : (
               <GeneralStats allMatches={matches} actMatches={actMatches} playerMMR={playerMMR}/>
             )}

@@ -27,3 +27,9 @@
   font-size: .8em;
   color: hsl(var(--neutral-text));
 }
+
+@media(max-width: 873px) {
+  .resultInfo {
+    flex: 0 0 70px;
+  }
+}
